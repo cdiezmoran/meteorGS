@@ -1,0 +1,63 @@
+@import './utils.less';
+
+.navbar-default {
+  background-color: rgba(0, 0, 0, .8);
+  border-color: none;
+
+  .navbar-nav li {
+    a {
+      color: white;
+    }
+    a:hover {
+      color: @color-secondary;
+    }
+  }
+}
+
+.navbar-header {
+  a {
+    color: #eee;
+    float: left;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    position: relative;
+    display: block;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: white;
+  }
+}
+
+.navbar-default.affix-top {
+    background-color: transparent;
+    border-color: none;
+}
+
+.affix {
+  position: fixed;
+}
+
+.navbar-white {
+  background-color: transparent;
+  background-image: linear-gradient(black, transparent);
+  border-color: none;
+  border-width: 0;
+
+  .navbar-nav {
+    a {
+      color: #ddd;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      margin-top: 14px;
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+    a:hover {
+      color: white;
+      background-color: transparent;
+    }
+  }
+}

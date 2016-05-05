@@ -1,0 +1,44 @@
+@import './utils.less';
+
+.btn {
+  color: black;
+  vertical-align: middle;
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc, #eee);
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.btn:hover {
+  background-image: linear-gradient(#eee, #d5d5d5);
+}
+
+.btn-primary {
+  color: white !important;
+  background-color: #1976D2;
+  background-image: linear-gradient(#90CAF9, #1976D2);
+  border-color: #1565C0;
+}
+
+.btn-primary:hover {
+  background-image: linear-gradient(#42A5F5, #1565C0);
+}
+
+.btn-jumbotron {
+  margin-top: 20px;
+  color: white;
+  background-image: none;
+  background-color: @color-primary;
+  padding: 15px 30px;
+  border: 0;
+  border-radius: 300px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.btn-jumbotron:hover {
+  color: white;
+  background-image: none;
+  background-color: @color-primary-hover;
+}

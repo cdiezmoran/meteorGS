@@ -1,0 +1,20 @@
+<template name="App_body">
+  <div class="nav-bar">
+    {{> Template.dynamic template=nav}}
+  </div>
+
+  <div class="app-content">
+    {{> Template.dynamic template=main}}
+  </div>
+
+</template>
+
+<template name="Test">
+  <h1>This is just a test label.</h1>
+  <h2>Another test label.</h2>
+  <a class="js-test">Check the console!</a>
+</template>
+
+<template name="tempNotFound">
+  <h1>Page Not Found.</h1>
+</template>

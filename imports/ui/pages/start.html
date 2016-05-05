@@ -1,0 +1,36 @@
+<template name="Start_page">
+  <header id="header">
+    <div class="header-content">
+      <div class="header-content-inner">
+        <h1>Play what you want when you want to</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet mattis justo, in cursus libero. Morbi non dignissim enim, non vestibulum libero. Nunc dictum justo nec gravida fringilla.
+        </p>
+        <a href="{{pathFor 'signup'}}" class="btn btn-jumbotron">Sign Up Now!</a>
+      </div>
+    </div>
+  </header>
+  <section id="featured-games" class="no-padding bg-dark">
+    <h1>Featured Games</h1>
+    <p>
+      <a href="{{pathFor 'signup'}}">Sign up now</a> and enjoy all the games in our library!
+    </p>
+    <div class="container-fluid">
+      <div class="row no-gutter">
+        {{#each game in featuredGames}}
+        <div class="col-lg-4 col-sm-6">
+            <a href="{{pathFor 'signin'}}" class="portfolio-box">
+              <img src="{{game.img}}" alt="{{game.name}} image" class="img-responsive"/>
+              <div class="portfolio-box-caption">
+                <div class="portfolio-box-caption-content">
+                  <div class="game-developer">{{ gameDeveloperName(game.developerId) }}</div>
+                  <div class="game-name">{{game.name}}</div>
+                </div>
+              </div>
+            </a>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+</template>

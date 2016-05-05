@@ -1,0 +1,23 @@
+{
+  "public": {
+    "plan":{
+        "name": "standard",
+        "amount": {
+          "cents": 1499,
+          "usd": "$14.99"
+        },
+        "limit": 1,
+        "interval": "month"
+      },
+    "stripe": {
+      "testPublishableKey": "pk_test_LuTKLdW6zdOgA5j08wrOEFzB",
+      "livePublishableKey": "pk_live_OxPEnGNHPKHCqELsEtAQSKdn"
+    }
+  },
+  "private": {
+    "stripe": {
+      "testSecretKey": "sk_test_SFDqOhfsXLJ2wdjlwE8asAxI",
+      "liveSecretKey": "sk_live_QktQJt6EBOSHGdEoObFCMaub"
+    }
+  }
+}
