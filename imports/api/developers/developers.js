@@ -1,7 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const Developers = new Mongo.Collection('developers');
+export const Developers = new Mongo.Collection('Developers');
 
 const contactInfoSchema = new SimpleSchema({
   twitter: {

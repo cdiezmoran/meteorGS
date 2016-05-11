@@ -1,0 +1,46 @@
+<template name="Genres_page">
+  <div class="dropdown padding-top">
+    <button class="btn btn-default dropdown-toggle" type="button" id="genreDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      {{genreTitle}}
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="genreDropdown">
+      {{#each listGenre in genres}}
+        <li><a href="{{pathFor 'Genre.show' genre=listGenre}}">{{listGenre}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+
+  <section id="categories-section">
+    <div class="bg-dark">
+      <div class="container-fluid">
+        <div class="row">
+          {{#each game in genreGames}}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+              <a href="#" class="portfolio-box">
+                <img src="{{game.img}}" alt="{{game.name}} image" class="img-responsive home"/>
+                <div class="portfolio-box-caption">
+                  <div class="portfolio-box-caption-content">
+                    <div class="game-developer">{{ gameDeveloperName(game.developerId) }}</div>
+                    <div class="game-name">{{game.name}}</div>
+                    <div class="game-os">
+                      {{#if game.availableOn.windows}}
+                        <i class="fa fa-windows" aria-hidden="true"></i>
+                      {{/if}}
+                      {{#if game.availableOn.mac}}
+                        <i class="fa fa-apple" aria-hidden="true"></i>
+                      {{/if}}
+                      {{#if game.availableOn.linux}}
+                        <i class="fa fa-linux" aria-hidden="true"></i>
+                      {{/if}}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </section>
+</template>

@@ -91,7 +91,12 @@ Games.schema = new SimpleSchema({
   developerId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id
-  }
+  },
+  /*availableOn: {
+    windows: { type: Boolean } ,
+    mac: { type: Boolean },
+    linux: { type: Boolean }
+  }*/
 });
 
 Games.publicFields = {
