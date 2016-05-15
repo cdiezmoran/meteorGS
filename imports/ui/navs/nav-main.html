@@ -10,9 +10,22 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">{{emailLocalPart}}</a></li>
-          <li><a href="#" class="js-signout">Sign Out</a></li>
-          <li><a href="#"><i class="fa fa-download" aria-hidden="true"></i>  Download</a></li>
+          <li><a href="#" class="nav-right-item"><i class="fa fa-search fa-1p2x" aria-hidden="true"></i></a></li>
+          <li>
+            <div class="dropdown">
+              <a href="#" class="dropdown-toggle nav-right-item" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{emailLocalPart}}
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu navbar-drop" aria-labelledby="user-dropdown">
+                <li><a href="#" class="dropdown-item">Profile</a></li>
+                <li><a href="#" class="dropdown-item">Subscription</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#" class="js-signout dropdown-item">Sign Out</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="#" class="nav-right-item"><i class="fa fa-download" aria-hidden="true"></i>  Download</a></li>
         </ul>
       </div>
     </div>

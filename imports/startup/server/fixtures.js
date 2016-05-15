@@ -4,7 +4,7 @@ import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
 
 Meteor.startup(() => {
-  if (Developers.find().count === 0) {
+  if (Developers.find().count() === 0) {
     const devData = [
       {
         _id: 'edmcdev',
@@ -130,6 +130,71 @@ Meteor.startup(() => {
         _id: 'redev',
         name: 'Rebellion',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'coststdev',
+        name: 'Coffee Stain Studios',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'scsodev',
+        name: 'SCS Software',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'evtogadev',
+        name: 'Evil Tortilla Games',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'sqdev',
+        name: 'Squad',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'madev',
+        name: 'Maxis',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'mogadev',
+        name: 'Modulaatio Games',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'avstdev',
+        name: 'Avalanche Studios',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: '4agadev',
+        name: '4A GAMES',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'rostdev',
+        name: 'Rockstar Studios',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'magadev',
+        name: 'Machine Games',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: '2kgadev',
+        name: '2K Games',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'legedev',
+        name: 'League of Geeks',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'tofodev',
+        name: 'tobyfox',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
       }
     ];
 
@@ -149,11 +214,11 @@ Meteor.startup(() => {
       });
     });
   }
-  if (Games.find().count === 0) {
+  if (Games.find().count() === 0) {
     const data = [
       {
         name: 'Stardew Valley',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        description: 'You\'ve inherited your grandfather\'s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?',
         createdAt: new Date(),
         releaseDate: new Date(),
         genre: [
@@ -174,7 +239,7 @@ Meteor.startup(() => {
       },
       {
         name: 'Stories: The Path of Destinies',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        description: 'Stories: The Path of Destinies is an Action-RPG, an enchanted storybook filled with madcap fantasy tales, each told by a zippy narrator attuned to the player’s choices and actions.',
         createdAt: new Date(),
         releaseDate: new Date(),
         genre: [
@@ -197,7 +262,7 @@ Meteor.startup(() => {
       },
       {
         name: 'The Binding of Isaac',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        description: 'When Isaac’s mother starts hearing the voice of God demanding a sacrifice be made to prove her faith, Isaac escapes into the basement facing droves of deranged enemies, lost brothers and sisters, his fears, and eventually his mother.',
         createdAt: new Date(),
         releaseDate: new Date(),
         genre: [
@@ -698,6 +763,284 @@ Meteor.startup(() => {
         imgHigh: 'https://media.playstation.com/is/image/SCEA/sniper-elite-3-listing-thumb-01-ps4-us-14jul14?$Icon$'
       },
       {
+        name: 'Goat Simulator',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'simulation',
+          'casual',
+          'indie'
+        ],
+        rating: 0,
+        img: 'https://media.playstation.com/is/image/SCEA/goat-simulator-listing-thumb-01-us-07aug15?$Icon$',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'coststdev',
+        imgHigh: ''
+      },
+      {
+        name: 'Euro Truck Simulator 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'simulation',
+          'casual',
+          'indie'
+        ],
+        rating: 0,
+        img: 'http://www.geforce.com/sites/default/files-world/attachments/EuroTruckBanner.jpg',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'scsodev',
+        imgHigh: ''
+      },
+      {
+        name: 'Who\'s Your Daddy',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'simulation',
+          'casual',
+          'action',
+          'indie'
+        ],
+        rating: 0,
+        img: 'http://cdn.akamai.steamstatic.com/steam/apps/427730/header.jpg?t=1463163137',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'evtogadev',
+        imgHigh: ''
+      },
+      {
+        name: 'Kerbal Space Program',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'simulation',
+          'casual',
+          'space',
+          'indie'
+        ],
+        rating: 0,
+        img: 'http://im.ziffdavisinternational.com/ign_es/screenshot/default/kerbal-space-program_6zsx.jpg',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'sqdev',
+        imgHigh: ''
+      },
+      {
+        name: 'Spore',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'simulation',
+          'space'
+        ],
+        rating: 0,
+        img: 'http://cdn.akamai.steamstatic.com/steam/apps/17390/header.jpg?t=1447351583',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'madev',
+        imgHigh: ''
+      },
+      {
+        name: 'RUNNING WITH RIFLES',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'shooter',
+          'action',
+          'rpg',
+          'indie'
+        ],
+        rating: 0,
+        img: 'http://cdn.akamai.steamstatic.com/steam/apps/270150/header.jpg?t=1463035327',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'mogadev',
+        imgHigh: ''
+      },
+      {
+        name: 'Metro 2033 Redux',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'shooter',
+          'action',
+          'fps'
+        ],
+        rating: 0,
+        img: 'http://cramgaming.com/wp-content/uploads/2014/08/metro-2033-redux.jpg',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: '4agadev',
+        imgHigh: ''
+      },
+      {
+        name: 'Max Payne 3',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'shooter',
+          'action',
+          'adventure',
+          'third-person'
+        ],
+        rating: 0,
+        img: 'http://vignette1.wikia.nocookie.net/rdr/images/4/4e/Maxpayne3_newswireposter2_640x400.jpg/revision/latest?cb=20120117154605&path-prefix=es',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'rostdev',
+        imgHigh: ''
+      },
+      {
+        name: 'Wolfenstein: The New Order',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'shooter',
+          'action',
+          'fps'
+        ],
+        rating: 0,
+        img: 'http://cdn.akamai.steamstatic.com/steam/apps/201810/header.jpg?t=1447361219',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: false,
+          linux: false
+        },
+        developerId: 'magadev',
+        imgHigh: ''
+      },
+      {
+        name: 'Bioshock',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'shooter',
+          'action',
+          'fps',
+          'rpg'
+        ],
+        rating: 0,
+        img: 'https://upload.wikimedia.org/wikipedia/en/8/86/Bioshock_series.jpg',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: false,
+          linux: false
+        },
+        developerId: '2kgadev',
+        imgHigh: ''
+      },
+      {
+        name: 'Bioshock 2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'shooter',
+          'action',
+          'fps',
+          'rpg'
+        ],
+        rating: 0,
+        img: 'http://images.akamai.steamusercontent.com/ugc/55499569487397083/2F09DBD49F1B8C6A2AB1D3E7CAF5718112C6F155/',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: false,
+          linux: false
+        },
+        developerId: '2kgadev',
+        imgHigh: ''
+      },
+      {
+        name: 'Armello',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'rpg',
+          'indie',
+          'adventure',
+          'strategy'
+        ],
+        rating: 0,
+        img: 'http://radiogameon.com/wp-content/uploads/2016/04/armello.jpg',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'legedev',
+        imgHigh: ''
+      },
+      {
+        name: 'Undertale',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'rpg',
+          'indie'
+        ],
+        rating: 0,
+        img: 'http://cdn.akamai.steamstatic.com/steam/apps/391540/header.jpg?t=1453305836',
+        views: 0,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerId: 'tofodev',
+        imgHigh: ''
+      },
+      {
         name: 'Parkitect',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.',
         createdAt: new Date(),
@@ -743,7 +1086,8 @@ Meteor.startup(() => {
         availableOn: game.availableOn,
         developerId: game.developerId,
         imgHigh: game.imgHigh,
-        minSysRequirements: sysRequirements
+        minSysRequirements: sysRequirements,
+        recommendedSysRequirements: sysRequirements
       });
     });
   }

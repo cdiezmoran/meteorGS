@@ -4,17 +4,10 @@ import { Template } from 'meteor/templating';
 import { $ } from 'meteor/jquery';
 
 Template.Main_nav.onRendered(function mainNavOnRender() {
-  var height;
-  if ($('.header-for-nav').length === 1) {
-    height = $('.header-for-nav').height();
-  }
-  else {
-    height = $('#affixNav').height();
-  }
-
-  $('#affixNav').affix({
+  const myNav = $('#affixNav');
+  myNav.affix({
     offset: {
-      top: height
+      top: myNav.height()
     }
   });
 });

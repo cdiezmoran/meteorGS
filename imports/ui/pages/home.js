@@ -42,5 +42,9 @@ Template.Home_page.helpers({
   },
   isEven(index) {
     return (index % 2) === 0 || index === 0;
+  },
+  gameCount(genre) {
+    genre = genre.toLowerCase();
+    return Games.find({ genre: { $in: [genre] } }).count();
   }
 });

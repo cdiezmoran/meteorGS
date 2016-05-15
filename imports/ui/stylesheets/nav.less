@@ -16,6 +16,7 @@
 
 .navbar-header {
   a {
+    background-color: transparent;
     color: #eee;
     float: left;
     padding-top: 15px;
@@ -26,14 +27,14 @@
     text-decoration: none;
   }
 
-  a:hover {
+  a:hover, a:focus {
     color: white;
   }
 }
 
 .navbar-gradient.affix {
   background-image: none;
-  background-color: rgba(17, 17, 17, .92);
+  background-color: rgba(34, 34, 34, .9);
 }
 
 .affix {
@@ -47,7 +48,8 @@
   border-width: 0;
 
   .navbar-nav {
-    a {
+    .nav-right-item {
+      background-color: transparent;
       color: #ddd;
       padding-top: 6px;
       padding-bottom: 6px;
@@ -55,9 +57,35 @@
       margin-left: 6px;
       margin-right: 6px;
     }
-    a:hover {
+    .nav-right-item:hover, .nav-right-item:focus {
       color: white;
       background-color: transparent;
     }
+
+    .dropdown-item {
+      background-color: transparent;
+      color: #ddd;
+    }
+
+    .dropdown-item:hover {
+      color: white;
+      background-color: #333;
+    }
   }
+}
+
+#user-dropdown {
+  float: right;
+}
+
+.navbar-drop {
+  margin-top: 48px;
+}
+
+.dropdown-menu .divider {
+  background-color: #555;
+}
+
+.fa-1p2x {
+  font-size: 1.2em;
 }

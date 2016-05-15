@@ -1,0 +1,62 @@
+<template name="Game_page">
+  <div class="game-container bg-dark">
+    <div class="container">
+      <h1 class="game-title col-lg-8">{{game.name}}</h1>
+      <div class="col-lg-8">
+        <img src="{{game.img}}" alt="{{game.name}} Image" class="game-header-image"/>
+        <div class="play-bar">
+          <a href="#" class="btn btn-play"><i class="fa fa-gamepad" aria-hidden="true"></i> Play</a>
+          <a href="#" class="btn btn-list"><i class="fa fa-plus" aria-hidden="true"></i> My List</a>
+          <div class="os-div">
+            Available on:
+            {{#if game.availableOn.windows}}
+              <i class="fa fa-windows os-icon" aria-hidden="true"></i>
+            {{/if}}
+            {{#if game.availableOn.mac}}
+              <i class="fa fa-apple os-icon" aria-hidden="true"></i>
+            {{/if}}
+            {{#if game.availableOn.linux}}
+              <i class="fa fa-linux os-icon" aria-hidden="true"></i>
+            {{/if}}
+          </div>
+        </div>
+        <p class="game-description">
+          {{game.description}}
+        </p>
+        <div class="separator"></div>
+      </div>
+
+      <div class="col-lg-4 right-column">
+        <div class="right-column-header dev">Developed By</div>
+        <div class="right-column-items dev">
+          <p><a href="#" class="developer-name">{{developer.name}}</a></p>
+          <p>
+            <a href="https://facebook.com/{{developer.contactInfo.facebook}}"><i class="fa fa-facebook contact-icon face" aria-hidden="true"></i></a>
+            <a href="https://twitter.com/{{developer.contactInfo.twitter}}"><i class="fa fa-twitter contact-icon twit" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-envelope-o contact-icon mail" aria-hidden="true"></i></a>
+          </p>
+        </div>
+        <div class="right-column-header">Minimum System Requirements</div>
+        <div class="right-column-items">
+          <p>OS: {{game.minSysRequirements.operatingSystem}}</p>
+          <p>Processor: {{game.minSysRequirements.processor}}</p>
+          <p>Graphics: {{game.minSysRequirements.graphics}}</p>
+          <p>Storage: {{game.minSysRequirements.storage}}</p>
+          <p>DirectX: {{game.minSysRequirements.directX}}</p>
+          <p>Sound: {{game.minSysRequirements.soundCard}}</p>
+          <p>Aditional Notes: {{game.minSysRequirements.aditionalNotes}}</p>
+        </div>
+        <div class="right-column-header">Recommended System Requirements</div>
+        <div class="right-column-items">
+          <p>OS: {{game.recommendedSysRequirements.operatingSystem}}</p>
+          <p>Processor: {{game.recommendedSysRequirements.processor}}</p>
+          <p>Graphics: {{game.recommendedSysRequirements.graphics}}</p>
+          <p>Storage: {{game.recommendedSysRequirements.storage}}</p>
+          <p>DirectX: {{game.recommendedSysRequirements.directX}}</p>
+          <p>Sound: {{game.recommendedSysRequirements.soundCard}}</p>
+          <p>Aditional Notes: {{game.recommendedSysRequirements.aditionalNotes}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
