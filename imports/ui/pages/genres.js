@@ -14,7 +14,7 @@ Template.Genres_page.onCreated(() => {
 });
 
 Template.Genres_page.onRendered(() => {
-  $('.genres-dropdown').css('padding-top', $('#affixNav').height());
+  $('.games').css('padding-top', $('#affixNav').height());
 });
 
 Template.Genres_page.helpers({

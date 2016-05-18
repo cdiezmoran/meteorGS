@@ -9,13 +9,14 @@
       {{#each game in gamesAddedRecently}}
         <div class="item {{isActive(@index)}}">
           <img src="{{game.imgHigh}}" alt="{{game.name}} Image" />
+          <div class="img-overlay"></div>
           <div class="container">
             <div class="carousel-caption">
               <p class="description">
                 {{game.description}}
               </p>
               <p>
-                <a href="#" class="btn btn-play"><i class="fa fa-gamepad fa-spx" aria-hidden="true"></i>  Play Now!</a>
+                <a href="{{pathFor 'Games.show' _id=game._id}}" class="btn btn-play"><i class="fa fa-gamepad fa-spx" aria-hidden="true"></i>  Play Now!</a>
               </p>
             </div>
           </div>

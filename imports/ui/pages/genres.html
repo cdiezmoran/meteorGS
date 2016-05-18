@@ -1,19 +1,6 @@
 <template name="Genres_page">
-  <div class="dropdown bg-dark genres-dropdown">
-    <a href="#" class="dropdown-toggle" type="button" id="genreDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      {{genreTitle}}
-      <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="genreDropdown">
-      <li class="dropdown-header">Top Genres</li>
-      {{#each listGenre in genres}}
-        <li><a href="{{pathFor 'Genre.show' genre=listGenre}}">{{listGenre}}</a></li>
-      {{/each}}
-    </ul>
-  </div>
-
   <section id="categories-section">
-    <div class="bg-dark">
+    <div class="bg-dark games">
       <div class="container-fluid">
         <div class="row">
           {{#each game in genreGames}}

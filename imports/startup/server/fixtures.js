@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
+import { Reviews } from '../../api/reviews/reviews.js';
 
 Meteor.startup(() => {
   if (Developers.find().count() === 0) {
@@ -238,6 +239,7 @@ Meteor.startup(() => {
         imgHigh: 'https://i.ytimg.com/vi/fI9QzlD_sm0/maxresdefault.jpg'
       },
       {
+        _id: 'storiespathofdestinies',
         name: 'Stories: The Path of Destinies',
         description: 'Stories: The Path of Destinies is an Action-RPG, an enchanted storybook filled with madcap fantasy tales, each told by a zippy narrator attuned to the player’s choices and actions.',
         createdAt: new Date(),
@@ -258,7 +260,16 @@ Meteor.startup(() => {
           linux: false
         },
         developerId: 'spgadev',
-        imgHigh: 'https://i.ytimg.com/vi/4SdBQxtjPfs/maxresdefault.jpg'
+        imgHigh: 'https://i.ytimg.com/vi/4SdBQxtjPfs/maxresdefault.jpg',
+        galleryLinks: ['http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_7b9f1a9b79ff9aaa8d29a1dd480480c4b439df57.1920x1080.jpg?t=1460755213',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_78a219f1f06e166c09541dc739083be61254abaa.1920x1080.jpg?t=1460755213',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_1242793740b82514c623ca4e56b883fca5288c1e.1920x1080.jpg?t=1460755213',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_fc03c9ce62cad4d1154553075513480229be7891.1920x1080.jpg?t=1460755213',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_83a93b490180dd0b51c91a364be0d677f792ab0f.1920x1080.jpg?t=1460755213',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_dd2ff9b1f868c5da4c6a59bf6e620445360c4bef.1920x1080.jpg?t=1460755213',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_ba4c39fe044f144a330176dbbb70d092a77721a3.1920x1080.jpg?t=1460755213'],
+        videoLinks: ['https://www.youtube.com/embed/5sRf9GsZ58A?controls=0',
+                     'https://www.youtube.com/embed/_ukxGwWsYJs?controls=0']
       },
       {
         name: 'The Binding of Isaac',
@@ -344,7 +355,7 @@ Meteor.startup(() => {
           linux: false
         },
         developerId: 'mostgmdev',
-        imgHigh: ''
+        imgHigh: 'https://i.ytimg.com/vi/cklw-Yu3moE/maxresdefault.jpg'
       },
       {
         name: 'Ark: Survival Evolved',
@@ -368,7 +379,7 @@ Meteor.startup(() => {
           linux: true
         },
         developerId: 'stwidev',
-        imgHigh: ''
+        imgHigh: 'http://img4.meristation.com/files/imagenes/noticias/2016/04/18/12412d12ed124124_0.jpg'
       },
       {
         name: 'Gigantic',
@@ -386,10 +397,10 @@ Meteor.startup(() => {
         availableOn: {
           windows: true,
           mac: false,
-          linux: false
+          linux: false,
         },
         developerId: 'modev',
-        imgHigh: ''
+        imgHigh: 'http://www.zonammorpg.com/wp-content/uploads/2015/08/1425515127-gigantic.jpg'
       },
       {
         name: 'Battleborn',
@@ -1074,20 +1085,78 @@ Meteor.startup(() => {
     };
 
     data.forEach((game) => {
-      Games.insert({
-        name: game.name,
-        description: game.description,
-        createdAt: game.createdAt,
-        releaseDate: game.releaseDate,
-        genre: game.genre,
-        rating: game.rating,
-        img: game.img,
-        views: game.views,
-        availableOn: game.availableOn,
-        developerId: game.developerId,
-        imgHigh: game.imgHigh,
-        minSysRequirements: sysRequirements,
-        recommendedSysRequirements: sysRequirements
+      if (game._id) {
+        Games.insert({
+          _id: game._id,
+          name: game.name,
+          description: game.description,
+          createdAt: game.createdAt,
+          releaseDate: game.releaseDate,
+          genre: game.genre,
+          rating: game.rating,
+          img: game.img,
+          views: game.views,
+          availableOn: game.availableOn,
+          developerId: game.developerId,
+          imgHigh: game.imgHigh,
+          minSysRequirements: sysRequirements,
+          recommendedSysRequirements: sysRequirements,
+          videoLinks: game.videoLinks,
+          galleryLinks: game.galleryLinks,
+        });
+      }
+      else {
+        Games.insert({
+          name: game.name,
+          description: game.description,
+          createdAt: game.createdAt,
+          releaseDate: game.releaseDate,
+          genre: game.genre,
+          rating: game.rating,
+          img: game.img,
+          views: game.views,
+          availableOn: game.availableOn,
+          developerId: game.developerId,
+          imgHigh: game.imgHigh,
+          minSysRequirements: sysRequirements,
+          recommendedSysRequirements: sysRequirements,
+          videoLinks: game.videoLinks,
+          galleryLinks: game.galleryLinks
+        });
+      }
+    });
+  }
+
+  if (Reviews.find().count() === 0) {
+    const data = [
+      {
+        title: 'Excellent!',
+        content: 'Ut vestibulum cursus vestibulum. Pellentesque sit amet dui a justo congue varius. Proin ipsum sapien, feugiat nec consectetur a, dapibus eget mauris. Nunc a sagittis nisl. Morbi sem purus, vehicula a ultricies sit amet, mattis ac ante. Aliquam erat volutpat. In nibh purus, molestie tincidunt elit sed, placerat cursus augue.',
+        rating: 5,
+        likeCount: 0,
+        dislikeCount: 0
+      },
+      {
+        title: 'Not that great',
+        content: 'Nunc quis nunc diam. Donec eu consectetur arcu, eget fringilla felis. Mauris ut felis vel nisl vestibulum tincidunt. Pellentesque nec cursus mauris. Maecenas a dictum nulla.',
+        rating: 3,
+        likeCount: 0,
+        dislikeCount: 0
+      }
+    ];
+
+    const userId = 'gjeTZQ4h98AqmGJnt';
+    const gameId = 'storiespathofdestinies';
+
+    data.forEach((review) => {
+      Reviews.insert({
+        title: review.title,
+        content: review.content,
+        rating: review.rating,
+        likeCount: review.likeCount,
+        dislikeCount: review.dislikeCount,
+        userId: userId,
+        gameId: gameId
       });
     });
   }

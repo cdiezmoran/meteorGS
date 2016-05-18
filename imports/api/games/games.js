@@ -88,6 +88,10 @@ Games.schema = new SimpleSchema({
     type: [String],
     optional: true
   },
+  galleryLinks: {
+    type: [String],
+    optional: true
+  },
   developerId: {
     type: String,
     regEx: SimpleSchema.RegEx.Id

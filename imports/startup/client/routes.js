@@ -11,6 +11,7 @@ import '../../ui/pages/home.js';
 import '../../ui/pages/genres.js';
 import '../../ui/pages/profile.js';
 import '../../ui/pages/game.js';
+import '../../ui/pages/search.js';
 import '../../ui/navs/nav-main.js';
 import '../../ui/navs/nav-start.js';
 
@@ -68,7 +69,14 @@ costumerRoutes.route('/game/:_id', {
   action() {
     BlazeLayout.render('App_body', { main: 'Game_page', nav: 'Main_nav' })
   }
-})
+});
+
+costumerRoutes.route('/search', {
+  name: 'App.search',
+  action() {
+    BlazeLayout.render('App_body', { main: 'Search_page', nav: 'Main_nav' })
+  }
+});
 
 FlowRouter.notFound = {
   action() {

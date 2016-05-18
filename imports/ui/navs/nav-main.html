@@ -9,8 +9,29 @@
         <a href="{{pathFor 'App.home'}}"><i class="fa fa-gamepad fa-2x" aria-hidden="true"></i></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><div class="vertical-separator nav-right-item"></div></li>
+          <li>
+            <div class="dropdown">
+              <a href="#" class="dropdown-toggle nav-right-item" type="button" id="genre-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                {{genreTitle}}
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu navbar-drop" aria-labelledby="genre-dropdown">
+                <li class="dropdown-header">Browse by genre:</li>
+                {{#each genre in genres}}
+                  <li><a href="{{pathFor 'Genre.show' genre=genre}}">{{genre}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+          </li>
+          {{#if isSearchRoute}}
+            <input id="search-box" type="text" name="SearchBox" placeholder="game title">
+          {{else}}
+            <li><a href="{{pathFor 'App.search'}}" class="nav-right-item"><i class="fa fa-search fa-1p2x" aria-hidden="true"></i></a></li>
+          {{/if}}
+        </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#" class="nav-right-item"><i class="fa fa-search fa-1p2x" aria-hidden="true"></i></a></li>
           <li>
             <div class="dropdown">
               <a href="#" class="dropdown-toggle nav-right-item" type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -19,7 +40,7 @@
               </a>
               <ul class="dropdown-menu navbar-drop" aria-labelledby="user-dropdown">
                 <li><a href="#" class="dropdown-item">Profile</a></li>
-                <li><a href="#" class="dropdown-item">Subscription</a></li>
+                <li><a href="#" class="dropdown-item">Account</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#" class="js-signout dropdown-item">Sign Out</a></li>
               </ul>
