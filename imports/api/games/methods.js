@@ -31,4 +31,6 @@ export const insert = new ValidatedMethod({
 
     Games.insert(game);
   }
+
+  //prueba comment
 });
