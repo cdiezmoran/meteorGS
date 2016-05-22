@@ -14,7 +14,7 @@
           <li>
             <div class="dropdown">
               <a href="#" class="dropdown-toggle nav-right-item" type="button" id="genre-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{genreTitle}}
+                {{gameDropdownTitle}}
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu navbar-drop" aria-labelledby="genre-dropdown">
@@ -22,6 +22,10 @@
                 {{#each genre in genres}}
                   <li><a href="{{pathFor 'Genre.show' genre=genre}}">{{genre}}</a></li>
                 {{/each}}
+                <li role="separator" class="divider"></li>
+                <li><a href="#">All genres and tags</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="{{pathFor 'User.list'}}">Your List</a></li>
               </ul>
             </div>
           </li>

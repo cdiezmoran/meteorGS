@@ -6,7 +6,11 @@
         <img src="{{game.img}}" alt="{{game.name}} Image" class="game-header-image"/>
         <div class="play-bar">
           <a href="#" class="btn btn-play"><i class="fa fa-gamepad" aria-hidden="true"></i> Play</a>
-          <a href="#" class="btn btn-list"><i class="fa fa-plus" aria-hidden="true"></i> My List</a>
+          {{#if isGameOnList}}
+            <a href="#" class="btn btn-list-added js-add-to-list"><i class="fa fa-check" aria-hidden="true" id="icon-added"></i> In List</a>
+          {{else}}
+            <a href="#" class="btn btn-list-add js-add-to-list"><i class="fa fa-plus" aria-hidden="true"></i> My List</a>
+          {{/if}}
           <div class="os-div">
             Available on:
             {{#if game.availableOn.windows}}

@@ -11,16 +11,26 @@ import { Developers } from '../../api/developers/developers.js';
 import { Reviews } from '../../api/reviews/reviews.js';
 
 import { updateLikeCount } from '../../api/reviews/methods.js';
+import { updateList } from '../../api/users/methods.js';
 
 Template.Game_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('developers');
   Meteor.subscribe('reviews');
+  Meteor.subscribe('userData');
+  setElementHeightByRatio('.game-header-image', 2);
 });
 
 Template.Game_page.onRendered(() => {
   $('.game-container').css('padding-top', $('#affixNav').height());
   $('#gameGalleryCarousel').carousel({interval: false});
+
+  setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.62);
+
+  $(window).resize(() => {
+    setElementHeightByRatio('.game-header-image', 2);
+    setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.62);
+  });
 });
 
 Template.Game_page.helpers({
@@ -55,7 +65,26 @@ Template.Game_page.helpers({
   reviewCount() {
     const game = getGame();
     return Reviews.find({ gameId: game._id }).count();
+  },
+  isGameOnList() {
+    const gameId = FlowRouter.getParam('_id');
+    return _.contains(Meteor.user().myList, gameId);
   }
+});
+
+Template.Game_page.events({
+  'click .js-add-to-list'(event, instance) {
+    event.preventDefault();
+
+    updateList.call({ gameId: FlowRouter.getParam('_id') });
+  },
+  'mouseenter .btn-list-added'(event, instance) {
+    $('#icon-added').removeClass('fa-check').addClass('fa-times');
+    $('.btn-list-added').contents()[1].nodeValue = ' Remove';
+  },
+  'mouseleave .btn-list-added'(event, instance) {
+    $('#icon-added').removeClass('fa-times').addClass('fa-check');
+    $('.btn-list-added').contents()[1].nodeValue = ' In List';  }
 });
 
 function getGame() {

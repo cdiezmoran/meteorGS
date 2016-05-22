@@ -14,6 +14,7 @@ Template.Search_page.onCreated(() => {
 });
 
 Template.Search_page.onRendered(() => {
+  $('#search-box').focus();
   $('.search').css('padding-top', $('#affixNav').height());
 });
 
@@ -31,6 +32,9 @@ Template.Search_page.helpers({
   },
   gameDeveloperName(developerId) {
     return Developers.findOne({ _id: developerId }).name;
+  },
+  isSearchBoxEmpty() {
+     return !$('#search-box').val();
   }
 });
 

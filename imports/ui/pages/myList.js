@@ -1,29 +1,28 @@
-import './start.html';
+import './myList.html';
 
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { $ } from 'meteor/jquery';
 
 import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
 
-Template.Start_page.onCreated(() => {
+Template.MyList_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('developers');
+  Meteor.subscribe('userData');
 });
 
-Template.Start_page.onRendered(() => {
-  setGameImgHeight('.img-responsive.start', 1.98);
+Template.MyList_page.onRendered(() => {
+  setElementHeightByRatio('.img-responsive.home', 2.12);
 
   $(window).resize(() => {
-    setGameImgHeight('.img-responsive.start', 1.98);
+    setElementHeightByRatio('.img-responsive.home', 2.12);
   });
 });
 
-Template.Start_page.helpers({
-  featuredGames() {
-    return Games.find({}, { sort: { views: -1 }, limit: 6 });
+Template.MyList_page.helpers({
+  myListGames() {
+    return Games.find({ _id: { $in: Meteor.user().myList } }, { sort: { createdAt: -1},  limit: 8 });
   },
   gameDeveloperName(developerId) {
     return Developers.findOne({ _id: developerId }).name;

@@ -1,6 +1,7 @@
 <template name="Search_page">
   <section id="search-results">
     <div class="bg-dark search">
+      {{#if getGames}}
       <div class="container-fluid">
         <div class="row">
           {{#each game in getGames}}
@@ -29,6 +30,17 @@
           {{/each}}
         </div>
       </div>
+      {{else}}
+        {{#if isSearchBoxEmpty}}
+          <p class="no-search-items">
+            Search for any game on our library by title.
+          </p>
+        {{else}}
+          <p class="no-search-items">
+            No Games Found!
+          </p>
+        {{/if}}
+      {{/if}}
     </div>
   </section>
 </template>

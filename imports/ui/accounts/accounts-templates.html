@@ -1,5 +1,6 @@
 <template name="Auth_page">
   <div class="page auth">
+    <div class="background"></div>
     <nav>
       <div class="nav-group">
         <a href="#" class="js-menu nav-item">
@@ -8,7 +9,7 @@
       </div>
     </nav>
 
-    <div class="content-scrollable">
+    <div class="content-center">
       <div class="wrapper-auth">
         {{> atForm}}
       </div>
@@ -17,7 +18,7 @@
 </template>
 
 <template name="override-atPwdFormBtn">
-  <button type="submit" class="btn btn-primary">
+  <button type="submit" class="btn btn-primary btn-pwd">
     {{buttonText}}
   </button>
 </template>
@@ -36,7 +37,7 @@
 
 <template name="override-atTitle">
   <h1 class="title-auth">{{title}}</h1>
-  <p class="subtitle-auth">Signing in allows you to see our complete library of games.</p>
+  <p class="subtitle-auth">Signing in allows you to see, download and play any game in our library.</p>
 </template>
 
 <template name="override-atError">
@@ -62,4 +63,5 @@
       {{/if}}
     </form>
   </div>
+  <div class="separator-signin"></div>
 </template>

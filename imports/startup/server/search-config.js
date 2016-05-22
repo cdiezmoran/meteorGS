@@ -3,7 +3,7 @@ import { SearchSource } from 'meteor/meteorhacks:search-source';
 import { Games } from '../../api/games/games.js';
 
 SearchSource.defineSource('Games', (searchText, options) => {
-  var options = {sort: {rating: -1}, limit: 20};
+  var options = {sort: {rating: -1}/*, limit: 20*/};
 
   if(searchText) {
     var regExp = buildRegExp(searchText);

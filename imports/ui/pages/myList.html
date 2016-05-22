@@ -1,9 +1,9 @@
-<template name="Genres_page">
+<template name="MyList_page">
   <section id="games-section">
-    <div class="bg-dark games">
+    <div class="bg-dark myList">
       <div class="container-fluid">
         <div class="row">
-          {{#each game in genreGames}}
+          {{#each game in myListGames}}
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
               <a href="{{pathFor 'Games.show' _id=game._id}}" class="portfolio-box">
                 <img src="{{game.img}}" alt="{{game.name}} image" class="img-responsive home"/>

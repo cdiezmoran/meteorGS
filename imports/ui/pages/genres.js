@@ -15,6 +15,12 @@ Template.Genres_page.onCreated(() => {
 
 Template.Genres_page.onRendered(() => {
   $('.games').css('padding-top', $('#affixNav').height());
+
+  setElementHeightByRatio('.img-responsive.home', 2.12);
+
+  $(window).resize(() => {
+    setElementHeightByRatio('.img-responsive.home', 2.12);
+  });
 });
 
 Template.Genres_page.helpers({

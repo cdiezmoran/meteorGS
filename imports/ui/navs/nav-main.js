@@ -30,14 +30,18 @@ Template.Main_nav.helpers({
       'Adventure'
     ];
   },
-  genreTitle() {
-    var genre = FlowRouter.getParam('genre');
-    if (genre) {
-      genre = genre.toLowerCase();
+  gameDropdownTitle() {
+    var routeName = FlowRouter.getRouteName();
+
+    if (routeName === 'Genre.show') {
+      var genre = FlowRouter.getParam('genre').toLowerCase();
       if (genre.length <= 3) {
         return genre.toUpperCase();
       }
       return genre.charAt(0).toUpperCase() + genre.slice(1);
+    }
+    else if (routeName === 'User.list') {
+      return 'Your List';
     }
     else {
       return 'Games';

@@ -65,11 +65,25 @@
   font-weight: 500;
 }
 
-.btn-list {
+.btn-list-add {
   background-image: none;
   background-color: transparent;
   color: #ddd;
   border-color: #ddd;
   border-radius: 4px;
   font-weight: 500;
+}
+
+.btn-list-added {
+  background-image: none;
+  background-color: transparent;
+  color: @color-primary;
+  border-color: @color-primary-dark;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.btn-list-added:hover, .btn-list-added:focus {
+  background-image: linear-gradient(#ef5350, #e53935);
+  border: none;
 }
