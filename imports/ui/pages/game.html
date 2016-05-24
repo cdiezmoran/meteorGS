@@ -60,21 +60,26 @@
         <div class="separator"></div>
         <div class="reviews">
           {{#each gameReviews}}
-            {{> review}}
+            {{> Review_comp}}
           {{/each}}
           <a href="#" class="show-all">Show all {{reviewCount}} reviews</a>
         </div>
       </div>
 
       <div class="col-lg-4 right-column">
-        <div class="right-column-header dev">Developed By</div>
+        <div class="right-column-header">Developed By</div>
         <div class="right-column-items dev">
-          <p><a href="#" class="developer-name">{{developer.name}}</a></p>
-          <p>
-            <a href="https://facebook.com/{{developer.contactInfo.facebook}}"><i class="fa fa-facebook contact-icon face" aria-hidden="true"></i></a>
-            <a href="https://twitter.com/{{developer.contactInfo.twitter}}"><i class="fa fa-twitter contact-icon twit" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-envelope-o contact-icon mail" aria-hidden="true"></i></a>
-          </p>
+          {{#each developer in developers}}
+            <p><a href="{{pathFor 'Developer.games' devId=developer._id}}" class="developer-name">{{developer.name}}</a></p>
+            <p>
+              <a href="https://facebook.com/{{developer.contactInfo.facebook}}"><i class="fa fa-facebook contact-icon face" aria-hidden="true"></i></a>
+              <a href="https://twitter.com/{{developer.contactInfo.twitter}}"><i class="fa fa-twitter contact-icon twit" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-envelope-o contact-icon mail" aria-hidden="true"></i></a>
+            </p>
+            {{#if isNotLastDev @index}}
+              <div class="separator"></div>
+            {{/if}}
+          {{/each}}
         </div>
         <div class="right-column-header">Minimum System Requirements</div>
         <div class="right-column-items">
@@ -96,28 +101,33 @@
           <p>Sound: {{game.recommendedSysRequirements.soundCard}}</p>
           <p>Aditional Notes: {{game.recommendedSysRequirements.aditionalNotes}}</p>
         </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<template name="review">
-  <div class="review">
-    <div class="review-item">
-      <div class="review-item-header">
-        <img src="{{reviewUserImg userId}}" alt="User Image" class="img-circle"/>
-        {{reviewUsername userId}} - {{title}}
-        <div class="rating">
-          {{{showRating rating}}}
+        <div class="right-column-header">ESRB Rating</div>
+        <div class="right-column-items img">
+          <img src="{{esrbRatingImg game.esrbRating}}" alt="ESRB Rating" class="esrb"/>
         </div>
-      </div>
-      <p>
-        {{content}}
-      </p>
-      <div class="separator reviews-separator"></div>
-      <div class="like-bar">
-        <a href="#" class="like-button"><i class="fa fa-thumbs-up {{#if isLiked likedBy}}liked{{/if}}" aria-hidden="true"></i></a>{{likeCount}}
-        <a href="#" class="dislike-button"><i class="fa fa-thumbs-down {{#if isDisliked dislikedBy}}disliked{{/if}}" aria-hidden="true"></i></a>{{dislikeCount}}
+        <div class="right-column-header">Languages</div>
+        <div class="right-column-items">
+          <table class="table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Interface</th>
+                <th>Audio</th>
+                <th>Subtitles</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each language in languages}}
+                <tr>
+                  <td>{{language.name}}</td>
+                  <td>{{#if language.interface}} <i class="fa fa-check" aria-hidden="true"></i>{{else}} <i class="fa fa-times" aria-hidden="true"></i>{{/if}}</td>
+                  <td>{{#if language.audio}}<i class="fa fa-check" aria-hidden="true"></i>{{else}} <i class="fa fa-times" aria-hidden="true"></i>{{/if}}</td>
+                  <td>{{#if language.subtitles}}<i class="fa fa-check" aria-hidden="true"></i>{{else}} <i class="fa fa-times" aria-hidden="true"></i>{{/if}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

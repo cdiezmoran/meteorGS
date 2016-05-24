@@ -92,8 +92,8 @@ Games.schema = new SimpleSchema({
     type: [String],
     optional: true
   },
-  developerId: {
-    type: String,
+  developerIds: {
+    type: [String],
     regEx: SimpleSchema.RegEx.Id
   },
   /*availableOn: {

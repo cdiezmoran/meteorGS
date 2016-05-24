@@ -1,0 +1,21 @@
+<template name="Review_comp">
+  <div class="review">
+    <div class="review-item">
+      <div class="review-item-header">
+        <img src="{{reviewUserImg userId}}" alt="User Image" class="img-circle"/>
+        {{reviewUsername userId}} - {{title}}
+        <div class="rating">
+          {{{showRating rating}}}
+        </div>
+      </div>
+      <p>
+        {{content}}
+      </p>
+      <div class="separator reviews-separator"></div>
+      <div class="like-bar">
+        <a href="#" class="like-button"><i class="fa fa-thumbs-up {{#if isLiked likedBy}}liked{{/if}}" aria-hidden="true"></i></a>{{likeCount}}
+        <a href="#" class="dislike-button"><i class="fa fa-thumbs-down {{#if isDisliked dislikedBy}}disliked{{/if}}" aria-hidden="true"></i></a>{{dislikeCount}}
+      </div>
+    </div>
+  </div>
+</template>

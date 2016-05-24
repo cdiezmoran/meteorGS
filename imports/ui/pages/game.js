@@ -10,7 +10,8 @@ import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
 import { Reviews } from '../../api/reviews/reviews.js';
 
-import { updateLikeCount } from '../../api/reviews/methods.js';
+import './components/review-item.js';
+
 import { updateList } from '../../api/users/methods.js';
 
 Template.Game_page.onCreated(() => {
@@ -37,21 +38,21 @@ Template.Game_page.helpers({
   game() {
     return getGame();
   },
-  developer() {
+  developers() {
     const game = getGame();
-    return Developers.findOne({ _id: game.developerId });
+    return game && Developers.find({ _id: { $in: game.developerIds } });
   },
   imagesAndVideos() {
     const game = getGame();
-    return game.videoLinks.concat(game.galleryLinks);
+    return game && game.videoLinks && game.videoLinks.concat(game.galleryLinks);
   },
   galleryImages() {
     const game = getGame();
-    return game.galleryLinks;
+    return game && game.galleryLinks;
   },
   videoLinks() {
     const game = getGame();
-    return game.videoLinks;
+    return game && game.videoLinks;
   },
   isActive(index) {
     if (index === 0) {
@@ -60,15 +61,46 @@ Template.Game_page.helpers({
   },
   gameReviews() {
     const game = getGame();
-    return Reviews.find({ gameId: game._id }, { sort: { createdAt: -1 }, limit: 5 });
+    return game && Reviews.find({ gameId: game._id }, { sort: { createdAt: -1 }, limit: 5 });
   },
   reviewCount() {
     const game = getGame();
-    return Reviews.find({ gameId: game._id }).count();
+    return game && Reviews.find({ gameId: game._id }).count();
   },
   isGameOnList() {
     const gameId = FlowRouter.getParam('_id');
-    return _.contains(Meteor.user().myList, gameId);
+    return Meteor.user() && _.contains(Meteor.user().myList, gameId);
+  },
+  isNotLastDev(index) {
+    const game = getGame();
+    return game && game.developerIds[index+1];
+  },
+  languages() {
+    const game = getGame();
+    return game && game.languages;
+  },
+  esrbRatingImg(esrbRating) {
+    if (esrbRating === 'early-childhood') {
+      return 'http://vignette1.wikia.nocookie.net/nintendo/images/f/f5/ESRB_EC.png/revision/latest?cb=20121105183531&path-prefix=en';
+    }
+    else if (esrbRating === 'everyone'){
+      return 'http://vignette1.wikia.nocookie.net/nintendo/images/5/55/ESRB_E.png/revision/latest?cb=20121105183822&path-prefix=en';
+    }
+    else if (esrbRating === 'e10+') {
+      return 'http://vignette3.wikia.nocookie.net/nintendo/images/b/b9/ESRB_E10.png/revision/latest?cb=20121105183922&path-prefix=en';
+    }
+    else if (esrbRating === 'teen') {
+      return 'http://vignette4.wikia.nocookie.net/nintendo/images/2/23/ESRB_T.png/revision/latest?cb=20121105184020&path-prefix=en';
+    }
+    else if (esrbRating === 'mature') {
+      return 'http://vignette1.wikia.nocookie.net/nintendo/images/1/12/ESRB_M.png/revision/latest?cb=20121105184159&path-prefix=en';
+    }
+    else if (esrbRating === 'adults-only') {
+      return 'http://vignette4.wikia.nocookie.net/nintendo/images/3/3d/ESRB_AO.png/revision/latest?cb=20121105184429&path-prefix=en';
+    }
+    else {
+      return 'http://vignette2.wikia.nocookie.net/nintendo/images/0/02/ESRB_RP.png/revision/latest?cb=20121105184537&path-prefix=en';
+    }
   }
 });
 
@@ -91,52 +123,3 @@ function getGame() {
   const gameId = FlowRouter.getParam('_id');
   return Games.findOne({ _id: gameId });
 }
-
-Template.review.helpers({
-  reviewUsername(userId) {
-    return Meteor.users.findOne({ _id: userId }).profile.firstName;
-  },
-  reviewUserImg(userId) {
-    return Meteor.users.findOne({ _id: userId }).profile.img;
-  },
-  showRating(rating) {
-    const fullStar = '<i class="fa fa-star" aria-hidden="true"></i>';
-    const emptyStar = '<i class="fa fa-star-o" aria-hidden="true"></i>';
-    var html = '';
-
-    for (var i = 0; i < rating; i++) {
-      html += fullStar;
-    }
-
-    for (var i = 0; i < (5-rating); i++) {
-      html += emptyStar;
-    }
-
-    return html;
-  },
-  isLiked(likedBy) {
-    return _.contains(likedBy, Meteor.userId());
-  },
-  isDisliked(dislikedBy) {
-    return _.contains(dislikedBy, Meteor.userId());
-  }
-});
-
-Template.review.events({
-  'click .like-button'(event, instance){
-    event.preventDefault();
-
-    updateLikeCount.call({
-      reviewId: this._id,
-      isLike: true
-    });
-  },
-  'click .dislike-button'(event, instance) {
-    event.preventDefault();
-
-    updateLikeCount.call({
-      reviewId: this._id,
-      isLike: false
-    });
-  }
-});

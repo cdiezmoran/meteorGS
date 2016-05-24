@@ -14,6 +14,7 @@ import '../../ui/pages/profile.js';
 import '../../ui/pages/game.js';
 import '../../ui/pages/search.js';
 import '../../ui/pages/myList.js';
+import '../../ui/pages/devGames.js';
 import '../../ui/navs/nav-main.js';
 import '../../ui/navs/nav-start.js';
 
@@ -38,7 +39,6 @@ function saveScrollPosition(context) {
   });
   previousPaths.push(pathInfo);
   Session.set('previousPaths', previousPaths);
-  console.log(previousPaths);
 }
 
 function jumpToPrevScrollPosition(context, index) {
@@ -59,11 +59,10 @@ function jumpToPrevScrollPosition(context, index) {
     }, 10);
   }
   Session.set('previousPaths', previousPaths);
-  console.log(previousPaths);
 }
 
-FlowRouter.triggers.enter([jumpToPrevScrollPosition]);
-FlowRouter.triggers.exit([saveScrollPosition]);
+FlowRouter.triggers.enter([jumpToPrevScrollPosition], { except: ['App.start', 'signin', 'signup', 'forgotPwd', 'resetPwd'] });
+FlowRouter.triggers.exit([saveScrollPosition], { except: ['App.start', 'signin', 'signup', 'forgotPwd', 'resetPwd'] });
 
 FlowRouter.route('/', {
   name: 'App.start',
@@ -71,6 +70,8 @@ FlowRouter.route('/', {
     if (Meteor.loggingIn() || Meteor.userId()) {
       redirect('/home');
     }
+
+    Session.set('previousPaths', []);
   }],
   action() {
     BlazeLayout.render('App_body', { main: 'Start_page', nav: 'Start_nav'});
@@ -126,6 +127,13 @@ costumerRoutes.route('/myList', {
     BlazeLayout.render('App_body', { main: 'MyList_page', nav: 'Main_nav' })
   }
 });
+
+costumerRoutes.route('/devGames/:devId', {
+  name: 'Developer.games',
+  action() {
+    BlazeLayout.render('App_body', { main: 'DevGames_page', nav: 'Main_nav' })
+  }
+})
 
 FlowRouter.notFound = {
   action() {

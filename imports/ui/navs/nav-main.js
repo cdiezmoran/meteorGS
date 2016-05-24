@@ -16,9 +16,8 @@ Template.Main_nav.onRendered(function mainNavOnRender() {
 });
 
 Template.Main_nav.helpers({
-  emailLocalPart() {
-    const email = Meteor.user().emails[0].address;
-    return email.substring(0, email.indexOf('@'));
+  userFirstName() {
+    return Meteor.user() && Meteor.user().profile && Meteor.user().profile.firstName;
   },
   genres() {
     return [
@@ -62,6 +61,18 @@ Template.Main_nav.events({
         FlowRouter.go('App.start');
       }
     });
+  },
+  'click .dropdown'(event, instance) {
+    const icon = $(event.target.firstElementChild);
+    if (icon.hasClass('fa-rotate-180')) {
+      icon.removeClass('fa-rotate-180');
+    }
+    else {
+      icon.addClass('fa-rotate-180');
+    }
+  },
+  'blur .dropdown'(event, instance) {
+    $(event.target.firstElementChild).removeClass('fa-rotate-180');
   },
   "keyup #search-box": _.throttle((event) => {
       var text = $(event.target).val().trim();

@@ -6,21 +6,13 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { $ } from 'meteor/jquery';
 
 import { Games } from '../../api/games/games.js';
-import { Developers } from '../../api/developers/developers.js';
 
 Template.Genres_page.onCreated(() => {
   Meteor.subscribe('games');
-  Meteor.subscribe('developers');
 });
 
 Template.Genres_page.onRendered(() => {
   $('.games').css('padding-top', $('#affixNav').height());
-
-  setElementHeightByRatio('.img-responsive.home', 2.12);
-
-  $(window).resize(() => {
-    setElementHeightByRatio('.img-responsive.home', 2.12);
-  });
 });
 
 Template.Genres_page.helpers({
@@ -44,8 +36,5 @@ Template.Genres_page.helpers({
   genreGames() {
     const genre = FlowRouter.getParam('genre').toLowerCase();
     return Games.find({ genre: { $in: [genre] } }, { sort: { createdAt: -1, views: -1 } });
-  },
-  gameDeveloperName(developerId) {
-    return Developers.findOne({ _id: developerId }).name;
   }
 });

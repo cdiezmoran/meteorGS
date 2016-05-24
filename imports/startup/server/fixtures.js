@@ -196,6 +196,11 @@ Meteor.startup(() => {
         _id: 'tofodev',
         name: 'tobyfox',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'fadev',
+        name: 'Fake Developer',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
       }
     ];
 
@@ -235,8 +240,9 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'coapdev',
-        imgHigh: 'https://i.ytimg.com/vi/fI9QzlD_sm0/maxresdefault.jpg'
+        developerIds: ['coapdev', 'fadev'],
+        imgHigh: 'https://i.ytimg.com/vi/fI9QzlD_sm0/maxresdefault.jpg',
+        esrbRating: 'everyone'
       },
       {
         _id: 'storiespathofdestinies',
@@ -259,7 +265,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'spgadev',
+        developerIds: ['spgadev', 'fadev'],
         imgHigh: 'https://i.ytimg.com/vi/4SdBQxtjPfs/maxresdefault.jpg',
         galleryLinks: ['http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_7b9f1a9b79ff9aaa8d29a1dd480480c4b439df57.1920x1080.jpg?t=1460755213',
                        'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_78a219f1f06e166c09541dc739083be61254abaa.1920x1080.jpg?t=1460755213',
@@ -269,7 +275,8 @@ Meteor.startup(() => {
                        'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_dd2ff9b1f868c5da4c6a59bf6e620445360c4bef.1920x1080.jpg?t=1460755213',
                        'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_ba4c39fe044f144a330176dbbb70d092a77721a3.1920x1080.jpg?t=1460755213'],
         videoLinks: ['https://www.youtube.com/embed/5sRf9GsZ58A?controls=0',
-                     'https://www.youtube.com/embed/_ukxGwWsYJs?controls=0']
+                     'https://www.youtube.com/embed/_ukxGwWsYJs?controls=0'],
+        esrbRating: 'teen'
       },
       {
         name: 'The Binding of Isaac',
@@ -290,8 +297,9 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'edmcdev',
-        imgHigh: 'http://i.imgur.com/PTNhA.jpg'
+        developerIds: ['edmcdev', 'fadev'],
+        imgHigh: 'http://i.imgur.com/PTNhA.jpg',
+        esrbRating: 'teen'
       },
       {
         name: 'Bastion',
@@ -313,7 +321,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'sugadev',
+        developerIds: ['sugadev', 'fadev'],
         imgHigh: 'https://wallpaperscraft.com/image/bastion_kid_hammer_mushrooms_forest_21770_1920x1080.jpg'
       },
       {
@@ -333,7 +341,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'padestdev',
+        developerIds: ['padestdev'],
         imgHigh: 'https://i.ytimg.com/vi/bxTT258PmNc/maxresdefault.jpg'
       },
       {
@@ -354,7 +362,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'mostgmdev',
+        developerIds: ['mostgmdev'],
         imgHigh: 'https://i.ytimg.com/vi/cklw-Yu3moE/maxresdefault.jpg'
       },
       {
@@ -378,7 +386,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'stwidev',
+        developerIds: ['stwidev'],
         imgHigh: 'http://img4.meristation.com/files/imagenes/noticias/2016/04/18/12412d12ed124124_0.jpg'
       },
       {
@@ -399,7 +407,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false,
         },
-        developerId: 'modev',
+        developerIds: ['modev'],
         imgHigh: 'http://www.zonammorpg.com/wp-content/uploads/2015/08/1425515127-gigantic.jpg'
       },
       {
@@ -421,7 +429,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'gesodev',
+        developerIds: ['gesodev'],
         imgHigh: ''
       },
       {
@@ -444,7 +452,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'temedev',
+        developerIds: ['temedev'],
         imgHigh: ''
       },
       {
@@ -466,7 +474,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'frlidev',
+        developerIds: ['frlidev'],
         imgHigh: ''
       },
       {
@@ -488,7 +496,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'klendev',
+        developerIds: ['klendev'],
         imgHigh: ''
       },
       {
@@ -512,7 +520,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'boindev',
+        developerIds: ['boindev'],
         imgHigh: 'https://i.ytimg.com/vi/iscE2eL3JHA/maxresdefault.jpg'
       },
       {
@@ -535,7 +543,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'acnedev',
+        developerIds: ['acnedev'],
         imgHigh: ''
       },
       {
@@ -555,7 +563,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'redogadev',
+        developerIds: ['redogadev'],
         imgHigh: ''
       },
       {
@@ -575,7 +583,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'spindev',
+        developerIds: ['spindev'],
         imgHigh: ''
       },
       {
@@ -596,7 +604,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'slmastdev',
+        developerIds: ['slmastdev'],
         imgHigh: 'https://elchapuzasinformatico.com/wp-content/uploads/2015/05/Project-CARS.jpg'
       },
       {
@@ -616,7 +624,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'coordev',
+        developerIds: ['coordev'],
         imgHigh: ''
       },
       {
@@ -638,7 +646,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'relodev',
+        developerIds: ['relodev'],
         imgHigh: ''
       },
       {
@@ -660,7 +668,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'crendev',
+        developerIds: ['crendev'],
         imgHigh: ''
       },
       {
@@ -681,7 +689,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'sutedev',
+        developerIds: ['sutedev'],
         imgHigh: ''
       },
       {
@@ -702,7 +710,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'gesodev',
+        developerIds: ['gesodev'],
         imgHigh: ''
       },
       {
@@ -723,7 +731,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'lapodev',
+        developerIds: ['lapodev'],
         imgHigh: ''
       },
       {
@@ -745,7 +753,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'flwihodev',
+        developerIds: ['flwihodev'],
         imgHigh: ''
       },
       {
@@ -770,7 +778,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'redev',
+        developerIds: ['redev'],
         imgHigh: 'https://media.playstation.com/is/image/SCEA/sniper-elite-3-listing-thumb-01-ps4-us-14jul14?$Icon$'
       },
       {
@@ -791,7 +799,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'coststdev',
+        developerIds: ['coststdev'],
         imgHigh: ''
       },
       {
@@ -812,7 +820,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'scsodev',
+        developerIds: ['scsodev'],
         imgHigh: ''
       },
       {
@@ -834,7 +842,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'evtogadev',
+        developerIds: ['evtogadev'],
         imgHigh: ''
       },
       {
@@ -856,7 +864,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'sqdev',
+        developerIds: ['sqdev'],
         imgHigh: ''
       },
       {
@@ -876,7 +884,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'madev',
+        developerIds: ['madev'],
         imgHigh: ''
       },
       {
@@ -898,7 +906,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'mogadev',
+        developerIds: ['mogadev'],
         imgHigh: ''
       },
       {
@@ -919,7 +927,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: '4agadev',
+        developerIds: ['4agadev'],
         imgHigh: ''
       },
       {
@@ -941,7 +949,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'rostdev',
+        developerIds: ['rostdev'],
         imgHigh: ''
       },
       {
@@ -962,7 +970,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: 'magadev',
+        developerIds: ['magadev'],
         imgHigh: ''
       },
       {
@@ -984,7 +992,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: '2kgadev',
+        developerIds: ['2kgadev'],
         imgHigh: ''
       },
       {
@@ -1006,7 +1014,7 @@ Meteor.startup(() => {
           mac: false,
           linux: false
         },
-        developerId: '2kgadev',
+        developerIds: ['2kgadev'],
         imgHigh: ''
       },
       {
@@ -1028,7 +1036,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'legedev',
+        developerIds: ['legedev'],
         imgHigh: ''
       },
       {
@@ -1048,7 +1056,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'tofodev',
+        developerIds: ['tofodev'],
         imgHigh: ''
       },
       {
@@ -1068,7 +1076,7 @@ Meteor.startup(() => {
           mac: true,
           linux: true
         },
-        developerId: 'teradev',
+        developerIds: ['teradev'],
         imgHigh: ''
       }
     ];
@@ -1084,6 +1092,39 @@ Meteor.startup(() => {
       aditionalNotes: 'These specs are just for testing.'
     };
 
+    const languages = [
+      {
+        name: 'English',
+        interface: true,
+        audio: true,
+        subtitles: true
+      },
+      {
+        name: 'Spanish',
+        interface: true,
+        audio: true,
+        subtitles: true
+      },
+      {
+        name: 'German',
+        interface: true,
+        audio: true,
+        subtitles: true
+      },
+      {
+        name: 'French',
+        interface: true,
+        audio: false,
+        subtitles: true
+      },
+      {
+        name: 'Korean',
+        interface: true,
+        audio: false,
+        subtitles: true
+      }
+    ];
+
     data.forEach((game) => {
       if (game._id) {
         Games.insert({
@@ -1097,12 +1138,14 @@ Meteor.startup(() => {
           img: game.img,
           views: game.views,
           availableOn: game.availableOn,
-          developerId: game.developerId,
+          developerIds: game.developerIds,
           imgHigh: game.imgHigh,
           minSysRequirements: sysRequirements,
           recommendedSysRequirements: sysRequirements,
           videoLinks: game.videoLinks,
           galleryLinks: game.galleryLinks,
+          languages: languages,
+          esrbRating: game.esrbRating,
         });
       }
       else {
@@ -1116,12 +1159,14 @@ Meteor.startup(() => {
           img: game.img,
           views: game.views,
           availableOn: game.availableOn,
-          developerId: game.developerId,
+          developerIds: game.developerIds,
           imgHigh: game.imgHigh,
           minSysRequirements: sysRequirements,
           recommendedSysRequirements: sysRequirements,
           videoLinks: game.videoLinks,
-          galleryLinks: game.galleryLinks
+          galleryLinks: game.galleryLinks,
+          languages: languages,
+          esrbRating: game.esrbRating
         });
       }
     });

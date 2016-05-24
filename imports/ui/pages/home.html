@@ -9,13 +9,9 @@
       {{#each game in gamesAddedRecently}}
         <div class="item {{isActive(@index)}}">
           <img src="{{game.imgHigh}}" alt="{{game.name}} Image" />
-          <div class="img-overlay"></div>
           <div class="container">
             <div class="carousel-caption">
               <h1>{{game.name}}</h1>
-              <!--<p class="description">
-                {{game.description}}
-              </p>-->
               <p>
                 <a href="{{pathFor 'Games.show' _id=game._id}}" class="btn btn-play"><i class="fa fa-gamepad fa-spx" aria-hidden="true"></i>  Play Now!</a>
               </p>
@@ -43,7 +39,7 @@
         <div class="container-fluid apretado">
           <div class="row">
             {{#each game in (gamesByGenre genre)}}
-              {{> games game=game}}
+              {{> GamesGrid_comp game=game}}
             {{/each}}
           </div>
           <a href="{{pathFor 'Genre.show' genre=genre}}" class="show-all-text">
@@ -59,7 +55,7 @@
         <div class="container-fluid apretado">
           <div class="row">
             {{#each game in myListGames}}
-              {{> games game=game}}
+              {{> GamesGrid_comp game=game}}
             {{/each}}
           </div>
           <a href="{{pathFor 'User.list'}}" class="show-all-text">
@@ -69,29 +65,4 @@
       </div>
     {{/if}}
   </section>
-</template>
-
-<template name="games">
-  <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <a href="{{pathFor 'Games.show' _id=game._id}}" class="portfolio-box">
-      <img src="{{game.img}}" alt="{{game.name}} image" class="img-responsive home" id="game-img"/>
-      <div class="portfolio-box-caption">
-        <div class="portfolio-box-caption-content">
-          <div class="game-developer">{{ gameDeveloperName game.developerId }}</div>
-          <div class="game-name">{{game.name}}</div>
-          <div class="game-os">
-            {{#if game.availableOn.windows}}
-              <i class="fa fa-windows" aria-hidden="true"></i>
-            {{/if}}
-            {{#if game.availableOn.mac}}
-              <i class="fa fa-apple" aria-hidden="true"></i>
-            {{/if}}
-            {{#if game.availableOn.linux}}
-              <i class="fa fa-linux" aria-hidden="true"></i>
-            {{/if}}
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
 </template>

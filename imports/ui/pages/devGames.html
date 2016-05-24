@@ -1,0 +1,24 @@
+<template name="DevGames_page">
+  <div class="developer-div">
+    <h1>{{developer.name}}</h1>
+    <div class="contact-info container-fluid">
+      <div class="col-lg-4">
+        <a href="https://facebook.com/{{developer.contactInfo.facebook}}"><i class="fa fa-facebook contact-icon face" aria-hidden="true"></i> {{developer.contactInfo.facebook}}</a>
+      </div>
+      <div class="col-lg-4">
+        <a href="https://twitter.com/{{developer.contactInfo.twitter}}"><i class="fa fa-twitter contact-icon twitter" aria-hidden="true"></i> {{developer.contactInfo.twitter}}</a>
+      </div>
+      <div class="col-lg-4">
+        <a href="#"><i class="fa fa-envelope-o contact-icon mail" aria-hidden="true"></i> {{developer.contactInfo.mail}}</a>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        {{#each game in developerGames}}
+          {{> GamesGrid_comp game=game}}
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>
