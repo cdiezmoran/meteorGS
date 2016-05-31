@@ -3,7 +3,12 @@
     <div class="container">
       <h1 class="game-title col-lg-8">{{game.name}}</h1>
       <div class="col-lg-8">
-        <img src="{{game.img}}" alt="{{game.name}} Image" class="game-header-image"/>
+        <div class="game-img">
+          <img src="{{game.img}}" alt="{{game.name}} Image" class="game-header-image"/>
+          <div class="game-rating">
+            {{{showRating game.rating}}}
+          </div>
+        </div>
         <div class="play-bar">
           <a href="#" class="btn btn-play"><i class="fa fa-gamepad" aria-hidden="true"></i> Play</a>
           {{#if isGameOnList}}
@@ -59,10 +64,10 @@
         <h3>Reviews:  <span class="badge">{{reviewCount}}</span></h3>
         <div class="separator"></div>
         <div class="reviews">
-          {{#each gameReviews}}
-            {{> Review_comp}}
+          {{#each review in gameReviews}}
+            {{> Review_comp review=review}}
           {{/each}}
-          <a href="#" class="show-all">Show all {{reviewCount}} reviews</a>
+          <a href="{{pathFor 'Game.reviews' gameId=game._id}}" class="show-all">Show all {{reviewCount}} reviews</a>
         </div>
       </div>
 

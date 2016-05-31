@@ -74,7 +74,7 @@
   font-weight: 500;
 }
 
-.btn-list-added {
+.btn-list-added, .btn-reviewed, .btn-reviewed:focus {
   background-image: none;
   background-color: transparent;
   color: @color-primary;
@@ -86,4 +86,10 @@
 .btn-list-added:hover, .btn-list-added:focus {
   background-image: linear-gradient(#ef5350, #e53935);
   border: none;
+}
+
+.btn-reviewed:hover {
+  color: @color-primary;
+  background-image: none;
+  background-color: rgba(66, 165, 245, .1);
 }

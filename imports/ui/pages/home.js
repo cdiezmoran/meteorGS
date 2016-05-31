@@ -12,6 +12,18 @@ Template.Home_page.onCreated(() => {
   Meteor.subscribe('userData');
 });
 
+Template.Home_page.onRendered(() => {
+  if ($(window).width() < 1080) {
+    setCarouselHeightByRatio(['#myCarousel', '.carousel', '.carousel .item', '.carousel .item img'], 1.7818);
+  }
+
+  $(window).resize(() => {
+    if ($(window).width() < 1080) {
+      setCarouselHeightByRatio(['#myCarousel', '.carousel', '.carousel .item', '.carousel .item img'], 1.7818);
+    }
+  });
+});
+
 Template.Home_page.helpers({
   gamesAddedRecently() {
     return Games.find({}, { sort: { createdAt: -1 }, limit: 3 });

@@ -15,6 +15,8 @@ import '../../ui/pages/game.js';
 import '../../ui/pages/search.js';
 import '../../ui/pages/myList.js';
 import '../../ui/pages/devGames.js';
+import '../../ui/pages/reviews.js';
+import '../../ui/pages/singleReview.js';
 import '../../ui/navs/nav-main.js';
 import '../../ui/navs/nav-start.js';
 
@@ -132,6 +134,20 @@ costumerRoutes.route('/devGames/:devId', {
   name: 'Developer.games',
   action() {
     BlazeLayout.render('App_body', { main: 'DevGames_page', nav: 'Main_nav' })
+  }
+});
+
+costumerRoutes.route('/reviews/:gameId', {
+  name: 'Game.reviews',
+  action() {
+    BlazeLayout.render('App_body', { main: 'Reviews_page', nav: 'Main_nav' })
+  }
+});
+
+costumerRoutes.route('/review/:reviewId', {
+  name: 'Single.review',
+  action() {
+    BlazeLayout.render('App_body', { main: 'SingleReview_page', nav: 'Main_nav' })
   }
 })
 

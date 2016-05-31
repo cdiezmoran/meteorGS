@@ -1,0 +1,15 @@
+<template name="Comment_comp">
+  <div class="comment-item">
+    <div class="row">
+      <div class="col-lg-1">
+        <img src="{{commentUserImg comment.userId}}" alt="User Image" class="img-circle" />
+      </div>
+      <div class="col-lg-11">
+        {{commentUsername comment.userId}} - {{comment.createdAt}}
+        <p>
+          {{comment.comment}}
+        </p>
+      </div>
+    </div>
+  </div>
+</template>

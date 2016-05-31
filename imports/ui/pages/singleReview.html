@@ -1,0 +1,32 @@
+<template name="SingleReview_page">
+  <div class="single-review-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          {{> Review_comp review=singleReview}}
+          <div class="comments-div">
+            <h3>Comments</h3>
+            <div class="separator reviews-separator"></div>
+            <div class="comment-container">
+              <form class="comment-form">
+                <input type="text" name="comment" placeholder="Add a comment" class="comment-input">
+              </form>
+              <div class="post-button-div">
+                <a href="#" class="js-post-comment btn btn-play">Post Comment</a>
+              </div>
+              {{#each comment in comments}}
+                {{> Comment_comp comment=comment}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <a href="{{pathFor 'Games.show' _id=game._id}}">
+            <img src="{{game.img}}" alt="{{game.img}} Image" class="review-game-img"/>
+            <h3>{{game.name}}</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

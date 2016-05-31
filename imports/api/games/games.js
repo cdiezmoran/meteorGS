@@ -81,6 +81,10 @@ Games.schema = new SimpleSchema({
     type: Number,
     defaultValue: 0
   },
+  ratingCount: {
+    type: Number,
+    defaultValue: 0
+  },
   img: {
     type: String
   },

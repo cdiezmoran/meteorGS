@@ -14,10 +14,10 @@ Template.Start_page.onCreated(() => {
 });
 
 Template.Start_page.onRendered(() => {
-  setGameImgHeight('.img-responsive.start', 1.98);
+  setElementHeightByRatio('.img-responsive.start', 1.98);
 
   $(window).resize(() => {
-    setGameImgHeight('.img-responsive.start', 1.98);
+    setElementHeightByRatio('.img-responsive.start', 1.98);
   });
 });
 

@@ -1125,6 +1125,8 @@ Meteor.startup(() => {
       }
     ];
 
+    const ratingCount = 0;
+
     data.forEach((game) => {
       if (game._id) {
         Games.insert({
@@ -1146,6 +1148,7 @@ Meteor.startup(() => {
           galleryLinks: game.galleryLinks,
           languages: languages,
           esrbRating: game.esrbRating,
+          ratingCount: ratingCount
         });
       }
       else {
@@ -1166,7 +1169,8 @@ Meteor.startup(() => {
           videoLinks: game.videoLinks,
           galleryLinks: game.galleryLinks,
           languages: languages,
-          esrbRating: game.esrbRating
+          esrbRating: game.esrbRating,
+          ratingCount:ratingCount
         });
       }
     });

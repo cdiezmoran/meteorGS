@@ -9,3 +9,6 @@ import '../../api/reviews/server/publications.js';
 
 import '../../api/users/methods.js';
 import '../../api/users/server/publications.js';
+
+import '../../api/comments/methods.js';
+import '../../api/comments/server/publications.js';

@@ -7,10 +7,12 @@ import { updateLikeCount } from '../../../api/reviews/methods.js';
 
 Template.Review_comp.helpers({
   reviewUsername(userId) {
-    return Meteor.users.findOne({ _id: userId }).profile.firstName;
+    const user = Meteor.users.findOne({ _id: userId });
+    return user && user.profile.firstName;
   },
   reviewUserImg(userId) {
-    return Meteor.users.findOne({ _id: userId }).profile.img;
+    const user = Meteor.users.findOne({ _id: userId });
+    return user && user.profile.img;
   },
   showRating(rating) {
     const fullStar = '<i class="fa fa-star" aria-hidden="true"></i>';
@@ -40,7 +42,7 @@ Template.Review_comp.events({
     event.preventDefault();
 
     updateLikeCount.call({
-      reviewId: this._id,
+      reviewId: this.review._id,
       isLike: true
     });
   },
@@ -48,7 +50,7 @@ Template.Review_comp.events({
     event.preventDefault();
 
     updateLikeCount.call({
-      reviewId: this._id,
+      reviewId: this.review._id,
       isLike: false
     });
   }

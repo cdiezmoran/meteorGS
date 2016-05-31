@@ -19,13 +19,13 @@ Template.Game_page.onCreated(() => {
   Meteor.subscribe('developers');
   Meteor.subscribe('reviews');
   Meteor.subscribe('userData');
-  setElementHeightByRatio('.game-header-image', 2);
 });
 
 Template.Game_page.onRendered(() => {
   $('.game-container').css('padding-top', $('#affixNav').height());
   $('#gameGalleryCarousel').carousel({interval: false});
 
+  setElementHeightByRatio('.game-header-image', 2);
   setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.62);
 
   $(window).resize(() => {
@@ -101,6 +101,55 @@ Template.Game_page.helpers({
     else {
       return 'http://vignette2.wikia.nocookie.net/nintendo/images/0/02/ESRB_RP.png/revision/latest?cb=20121105184537&path-prefix=en';
     }
+  },
+  showRating(rating) {
+    const fullStar = '<i class="fa fa-star" aria-hidden="true"></i>';
+    const halfStar = '<i class="fa fa-star-half-o" aria-hidden="true"></i>'
+    const emptyStar = '<i class="fa fa-star-o" aria-hidden="true"></i>';
+
+    var html;
+
+    if (rating === 5) {
+      html = fullStar + fullStar + fullStar + fullStar + fullStar;
+    }
+    else if (rating < 5 && rating > 4) {
+      html = fullStar + fullStar + fullStar + fullStar + halfStar;
+    }
+    else if (rating === 4) {
+      html = fullStar + fullStar + fullStar + fullStar + emptyStar;
+    }
+    else if (rating < 4 && rating > 3) {
+      html = fullStar + fullStar + fullStar + halfStar + emptyStar;
+    }
+    else if (rating === 3) {
+      html = fullStar + fullStar + fullStar + emptyStar + emptyStar;
+    }
+    else if(rating < 3 && rating > 2) {
+      html = fullStar + fullStar + halfStar + emptyStar + emptyStar;
+    }
+    else if (rating === 2) {
+      html = fullStar + fullStar + emptyStar + emptyStar + emptyStar;
+    }
+    else if (rating < 2 && rating > 1) {
+      html = fullStar + halfStar + emptyStar + emptyStar + emptyStar;
+    }
+    else if (rating === 1) {
+      html = fullStar + emptyStar + emptyStar + emptyStar + emptyStar;
+    }
+    else if (rating < 1 && rating > 0) {
+      html = halfStar + emptyStar + emptyStar + emptyStar + emptyStar;
+    }
+    else {
+      html = emptyStar + emptyStar + emptyStar + emptyStar + emptyStar;
+    }
+
+    if (rating % 1 !== 0) {
+      html += ' ' + rating.toFixed(1) + '/5';
+    }
+    else {
+      html += ' ' + rating + '/5';
+    }
+    return html;
   }
 });
 

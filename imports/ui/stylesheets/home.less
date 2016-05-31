@@ -1,20 +1,60 @@
 @import '../stylesheets/utils.less';
 
-.carousel {
-  height: 550px;
+@media(max-width: 1559px) and (min-width: 1080px) {
+  .carousel {
+    height: 550px !important;
+  }
+
+  .carousel .item {
+    height: 550px !important;
+    background-color: #777;
+  }
+
+  .carousel .item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 550px !important;
+  }
 }
 
-.carousel .item {
-  height: 550px;
-  background-color: #777;
+@media(max-width: 1749px) and (min-width: 1560px) {
+  .carousel {
+    height: 700px !important;
+  }
+
+  .carousel .item {
+    height: 700px !important;
+    background-color: #777;
+  }
+
+  .carousel .item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 700px !important;
+  }
 }
 
-.carousel .item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 550px;
+@media(max-width: 1920px) and (min-width: 1750px) {
+  .carousel {
+    height: 750px !important;
+  }
+
+  .carousel .item {
+    height: 750px !important;
+    background-color: #777;
+  }
+
+  .carousel .item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 750px !important;
+  }
 }
 
 .img-responsive.home {

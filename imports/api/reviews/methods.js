@@ -5,6 +5,30 @@ import { _ } from 'meteor/underscore';
 
 import { Reviews } from './reviews.js';
 
+export const insert = new ValidatedMethod({
+  name: 'insert.review',
+  validate: new SimpleSchema({
+    gameId: { type: String },
+    title: { type: String },
+    content: { type: String },
+    rating: { type: Number }
+  }).validator(),
+  run({ gameId, title, content, rating }) {
+    const review = {
+      gameId,
+      title,
+      content,
+      rating,
+      createdAt: new Date(),
+      userId: this.userId,
+      likeCount: 0,
+      dislikeCount: 0
+    }
+
+    Reviews.insert(review);
+  }
+});
+
 export const updateLikeCount = new ValidatedMethod({
   name: 'reviews.updateLikeCount',
   validate: new SimpleSchema({
