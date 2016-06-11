@@ -11,19 +11,23 @@ import { Reviews } from '../../api/reviews/reviews.js';
 import { Comments } from '../../api/comments/comments.js';
 
 import { insert } from '../../api/comments/methods.js';
+import { setElementHeightByRatio } from '../../startup/client/functions.js';
 
-import './components/review-item.js';
-import './components/comment-item.js';
+import '../components/review-item.js';
+import '../components/comment-item.js';
 
 Template.SingleReview_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('reviews');
   Meteor.subscribe('comments.inReview', FlowRouter.getParam('reviewId'));
-  setElementHeightByRatio('.review-game-img', 2.25);
 });
 
 Template.SingleReview_page.onRendered(() => {
   $('.single-review-page').css('margin-top', $('#affixNav').height());
+
+  $(window).resize(() => {
+    setElementHeightByRatio('.review-game-img', 2.25);
+  });
 });
 
 Template.SingleReview_page.helpers({
@@ -35,7 +39,11 @@ Template.SingleReview_page.helpers({
     return review && Games.findOne({ _id: review.gameId });
   },
   comments() {
-    return Comments.find();
+    const reviewId = FlowRouter.getParam('reviewId');
+    return reviewId && Comments.find({ reviewId }, { sort: { createdAt: -1 } });
+  },
+  currentUserImg() {
+    return Meteor.user() && Meteor.user().profile.img;
   }
 });
 

@@ -1,10 +1,25 @@
 {
-  "name": "meteorGameService",
+  "name": "mgs",
   "private": true,
   "scripts": {
     "start": "meteor run"
   },
   "dependencies": {
-    "meteor-node-stubs": "~0.2.0"
-  }
+    "fibers": "^1.0.13",
+    "meteor-node-stubs": "^0.2.3"
+  },
+  "version": "1.0.0",
+  "description": "Game service",
+  "main": "main.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdiezmoran/meteorGS.git"
+  },
+  "author": "Carlos Diez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdiezmoran/meteorGS/issues"
+  },
+  "homepage": "https://github.com/cdiezmoran/meteorGS"
 }

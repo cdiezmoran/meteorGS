@@ -7,6 +7,8 @@ import { $ } from 'meteor/jquery';
 
 import { Games } from '../../api/games/games.js';
 
+import '../components/games-grid.js';
+
 Template.Genres_page.onCreated(() => {
   Meteor.subscribe('games');
 });

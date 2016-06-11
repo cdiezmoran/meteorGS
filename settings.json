@@ -1,6 +1,7 @@
 {
   "public": {
-    "plan":{
+    "plans":[
+      {
         "name": "standard",
         "amount": {
           "cents": 1499,
@@ -8,7 +9,8 @@
         },
         "limit": 1,
         "interval": "month"
-      },
+      }
+    ],
     "stripe": {
       "testPublishableKey": "pk_test_LuTKLdW6zdOgA5j08wrOEFzB",
       "livePublishableKey": "pk_live_OxPEnGNHPKHCqELsEtAQSKdn"

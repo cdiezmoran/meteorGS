@@ -8,9 +8,16 @@
             <h3>Comments</h3>
             <div class="separator reviews-separator"></div>
             <div class="comment-container">
-              <form class="comment-form">
-                <input type="text" name="comment" placeholder="Add a comment" class="comment-input">
-              </form>
+              <div class="row">
+                <div class="col-lg-1">
+                  <img src="{{currentUserImg}}" alt="current user img" class="img-circle"/>
+                </div>
+                <div class="col-lg-11">
+                  <form class="comment-form">
+                    <input type="text" name="comment" placeholder="Add a comment" class="comment-input">
+                  </form>
+                </div>
+              </div>
               <div class="post-button-div">
                 <a href="#" class="js-post-comment btn btn-play">Post Comment</a>
               </div>

@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Stripe } from 'meteor/mrgalaxy:stripe';
+import { sAlert } from 'meteor/juliancwirko:s-alert';
 import { $ } from 'meteor/jquery';
 
 Meteor.startup(() => {
@@ -10,7 +11,7 @@ Meteor.startup(() => {
     getToken: function( domElement, card, callback ) {
       Stripe.card.createToken( card, function( status, response ) {
         if ( response.error ) {
-          //Show error message
+          sAlert.error(esponse.error.message);
         } else {
           STRIPE.setToken( response.id, domElement, callback );
         }

@@ -1,0 +1,14 @@
+<template name="Friends_page">
+  <div class="friends-page">
+    <div class="container">
+      <h1>Friends</h1>
+      <div class="container-fluid">
+        <div class="row">
+          {{#each friend in friends}}
+            {{> Friend_comp friend=friend}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

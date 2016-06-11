@@ -1,0 +1,12 @@
+<template name="Friend_comp">
+  <a href="#" class="friend-box">
+    <div class="col-lg-4 col-friends">
+      <div class="friend-item">
+        <img src="{{friend.profile.img}}" alt="Friend Profile Image" class="img-circle"/>
+        {{friend.profile.name}}
+        <a href="#" class="right-button"><i class="fa fa-user-times" aria-hidden="true"></i></a>
+      </div>
+      <div class="status-bar {{#if isOnline}}online{{else}}offline{{/if}}"></div>
+    </div>
+  </a>
+</template>

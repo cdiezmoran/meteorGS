@@ -2,8 +2,8 @@
   <div class="review-comp">
     <div class="review-item">
       <div class="review-item-header">
-        <img src="{{reviewUserImg review.userId}}" alt="User Image" class="img-circle"/>
-        {{reviewUsername review.userId}} - {{review.title}}
+        <a href="#"><img src="{{reviewUserImg review.userId}}" alt="User Image" class="img-circle"/>
+        {{reviewUsername review.userId}}</a> - <a href="{{pathFor 'Single.review' reviewId=review._id}}">{{review.title}}</a>
         <div class="rating">
           {{{showRating review.rating}}}
         </div>

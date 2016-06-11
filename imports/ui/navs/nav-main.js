@@ -4,7 +4,13 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { $ } from 'meteor/jquery';
 
-Template.Main_nav.onRendered(function mainNavOnRender() {
+import { Genres } from '../../api/genres/genres.js';
+
+Template.Main_nav.onCreated(() => {
+  Meteor.subscribe('mainGenres');
+});
+
+Template.Main_nav.onRendered(() => {
   const myNav = $('#affixNav');
   myNav.affix({
     offset: {
@@ -17,17 +23,11 @@ Template.Main_nav.onRendered(function mainNavOnRender() {
 
 Template.Main_nav.helpers({
   userFirstName() {
-    return Meteor.user() && Meteor.user().profile && Meteor.user().profile.firstName;
+    const user = Meteor.user();
+    return user && user.profile.name.split(" ")[0];
   },
   genres() {
-    return [
-      'Action',
-      'Simulation',
-      'Shooter',
-      'RPG',
-      'Indie',
-      'Adventure'
-    ];
+    return Genres.find();
   },
   gameDropdownTitle() {
     var routeName = FlowRouter.getRouteName();

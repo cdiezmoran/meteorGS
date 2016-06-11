@@ -5,7 +5,7 @@
         <img src="{{commentUserImg comment.userId}}" alt="User Image" class="img-circle" />
       </div>
       <div class="col-lg-11">
-        {{commentUsername comment.userId}} - {{comment.createdAt}}
+        {{commentUsername comment.userId}} - {{formatDate comment.createdAt}}
         <p>
           {{comment.comment}}
         </p>

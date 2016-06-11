@@ -34,11 +34,11 @@
     {{#each genre in genres}}
       <div class="{{#if isEven @index}}bg-dark{{else}}bg-no-tan-darks{{/if}}">
         <div class="{{#if isFirstGenre @index}}padding-div-md{{else}}padding-div-lg{{/if}}"></div>
-        <a href="{{pathFor 'Genre.show' genre=genre}}" class="genre-title">{{genre}} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="{{pathFor 'Genre.show' genre=genre.name}}" class="genre-title">{{genre.name}} <i class="fa fa-angle-right" aria-hidden="true"></i></a>
         <div class="padding-div-sm"></div>
         <div class="container-fluid apretado">
           <div class="row">
-            {{#each game in (gamesByGenre genre)}}
+            {{#each game in (gamesByGenre genre.name)}}
               {{> GamesGrid_comp game=game}}
             {{/each}}
           </div>

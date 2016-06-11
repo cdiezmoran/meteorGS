@@ -3,12 +3,16 @@ import './review-item.html';
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-import { updateLikeCount } from '../../../api/reviews/methods.js';
+import { updateLikeCount } from '../../api/reviews/methods.js';
+
+Template.Review_comp.onCreated(() => {
+  Meteor.subscribe('userData');
+});
 
 Template.Review_comp.helpers({
   reviewUsername(userId) {
     const user = Meteor.users.findOne({ _id: userId });
-    return user && user.profile.firstName;
+    return user && user.profile.name.split(" ")[0];
   },
   reviewUserImg(userId) {
     const user = Meteor.users.findOne({ _id: userId });

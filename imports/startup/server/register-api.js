@@ -12,3 +12,6 @@ import '../../api/users/server/publications.js';
 
 import '../../api/comments/methods.js';
 import '../../api/comments/server/publications.js';
+
+import '../../api/genres/methods.js';
+import '../../api/genres/server/publications.js';

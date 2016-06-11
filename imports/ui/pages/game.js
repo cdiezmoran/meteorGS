@@ -3,6 +3,7 @@ import './game.html';
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session';
 import { $ } from 'meteor/jquery';
 import { _ } from 'meteor/underscore';
 
@@ -10,22 +11,25 @@ import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
 import { Reviews } from '../../api/reviews/reviews.js';
 
-import './components/review-item.js';
+import '../components/review-item.js';
+import '../components/review-submit-form';
 
 import { updateList } from '../../api/users/methods.js';
+import { setElementHeightByRatio, setCarouselHeightByRatio  } from '../../startup/client/functions.js';
 
 Template.Game_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('developers');
   Meteor.subscribe('reviews');
   Meteor.subscribe('userData');
+
+  setElementHeightByRatio('.game-header-image', 2);
 });
 
 Template.Game_page.onRendered(() => {
   $('.game-container').css('padding-top', $('#affixNav').height());
   $('#gameGalleryCarousel').carousel({interval: false});
 
-  setElementHeightByRatio('.game-header-image', 2);
   setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.62);
 
   $(window).resize(() => {
@@ -44,6 +48,7 @@ Template.Game_page.helpers({
   },
   imagesAndVideos() {
     const game = getGame();
+    Session.set('numberOfVideos', game.videoLinks.length);
     return game && game.videoLinks && game.videoLinks.concat(game.galleryLinks);
   },
   galleryImages() {
@@ -59,13 +64,19 @@ Template.Game_page.helpers({
       return 'active';
     }
   },
+  isVideo(index) {
+    const numberOfVideos = Session.get('numberOfVideos');
+    if (index < numberOfVideos) {
+      return 'vid-indicator';
+    }
+  },
   gameReviews() {
     const game = getGame();
     return game && Reviews.find({ gameId: game._id }, { sort: { createdAt: -1 }, limit: 5 });
   },
   reviewCount() {
     const game = getGame();
-    return game && Reviews.find({ gameId: game._id }).count();
+    return game && Reviews.find({ gameId: game._id }).count();;
   },
   isGameOnList() {
     const gameId = FlowRouter.getParam('_id');
@@ -107,7 +118,7 @@ Template.Game_page.helpers({
     const halfStar = '<i class="fa fa-star-half-o" aria-hidden="true"></i>'
     const emptyStar = '<i class="fa fa-star-o" aria-hidden="true"></i>';
 
-    var html;
+    var html = '';
 
     if (rating === 5) {
       html = fullStar + fullStar + fullStar + fullStar + fullStar;
@@ -149,6 +160,7 @@ Template.Game_page.helpers({
     else {
       html += ' ' + rating + '/5';
     }
+
     return html;
   }
 });
@@ -165,10 +177,97 @@ Template.Game_page.events({
   },
   'mouseleave .btn-list-added'(event, instance) {
     $('#icon-added').removeClass('fa-times').addClass('fa-check');
-    $('.btn-list-added').contents()[1].nodeValue = ' In List';  }
+    $('.btn-list-added').contents()[1].nodeValue = ' In List';
+  },
+  'slide.bs.carousel #gameGalleryCarousel'(event) {
+    const activeSlideIndex = $('#gameGalleryCarousel .active').index();
+    const numberOfVideos = Session.get('numberOfVideos');
+    if (activeSlideIndex < numberOfVideos) {
+      callPlayer("trailerFrame" + activeSlideIndex, "stopVideo");
+    }
+  }
 });
 
 function getGame() {
   const gameId = FlowRouter.getParam('_id');
   return Games.findOne({ _id: gameId });
+}
+
+function callPlayer(frame_id, func, args) {
+    if (window.jQuery && frame_id instanceof jQuery) frame_id = frame_id.get(0).id;
+    var iframe = document.getElementById(frame_id);
+    if (iframe && iframe.tagName.toUpperCase() != 'IFRAME') {
+        iframe = iframe.getElementsByTagName('iframe')[0];
+    }
+
+    // When the player is not ready yet, add the event to a queue
+    // Each frame_id is associated with an own queue.
+    // Each queue has three possible states:
+    //  undefined = uninitialised / array = queue / 0 = ready
+    if (!callPlayer.queue) callPlayer.queue = {};
+    var queue = callPlayer.queue[frame_id],
+        domReady = document.readyState == 'complete';
+
+    if (domReady && !iframe) {
+        // DOM is ready and iframe does not exist. Log a message
+        window.console && console.log('callPlayer: Frame not found; id=' + frame_id);
+        if (queue) clearInterval(queue.poller);
+    } else if (func === 'listening') {
+        // Sending the "listener" message to the frame, to request status updates
+        if (iframe && iframe.contentWindow) {
+            func = '{"event":"listening","id":' + JSON.stringify(''+frame_id) + '}';
+            iframe.contentWindow.postMessage(func, '*');
+        }
+    } else if (!domReady ||
+               iframe && (!iframe.contentWindow || queue && !queue.ready) ||
+               (!queue || !queue.ready) && typeof func === 'function') {
+        if (!queue) queue = callPlayer.queue[frame_id] = [];
+        queue.push([func, args]);
+        if (!('poller' in queue)) {
+            // keep polling until the document and frame is ready
+            queue.poller = setInterval(function() {
+                callPlayer(frame_id, 'listening');
+            }, 250);
+            // Add a global "message" event listener, to catch status updates:
+            messageEvent(1, function runOnceReady(e) {
+                if (!iframe) {
+                    iframe = document.getElementById(frame_id);
+                    if (!iframe) return;
+                    if (iframe.tagName.toUpperCase() != 'IFRAME') {
+                        iframe = iframe.getElementsByTagName('iframe')[0];
+                        if (!iframe) return;
+                    }
+                }
+                if (e.source === iframe.contentWindow) {
+                    // Assume that the player is ready if we receive a
+                    // message from the iframe
+                    clearInterval(queue.poller);
+                    queue.ready = true;
+                    messageEvent(0, runOnceReady);
+                    // .. and release the queue:
+                    while (tmp = queue.shift()) {
+                        callPlayer(frame_id, tmp[0], tmp[1]);
+                    }
+                }
+            }, false);
+        }
+    } else if (iframe && iframe.contentWindow) {
+        // When a function is supplied, just call it (like "onYouTubePlayerReady")
+        if (func.call) return func();
+        // Frame exists, send message
+        iframe.contentWindow.postMessage(JSON.stringify({
+            "event": "command",
+            "func": func,
+            "args": args || [],
+            "id": frame_id
+        }), "*");
+    }
+    /* IE8 does not support addEventListener... */
+    function messageEvent(add, listener) {
+        var w3 = add ? window.addEventListener : window.removeEventListener;
+        w3 ?
+            w3('message', listener, !1)
+        :
+            (add ? window.attachEvent : window.detachEvent)('onmessage', listener);
+    }
 }

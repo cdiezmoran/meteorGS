@@ -11,8 +11,11 @@ import { Developers } from '../../api/developers/developers.js';
 import { Reviews } from '../../api/reviews/reviews.js';
 
 import { insert } from '../../api/reviews/methods.js';
+import { setElementHeightByRatio } from '../../startup/client/functions.js';
+import { submitReview } from '../components/review-submit-form.js';
 
-import './components/review-item.js';
+import '../components/review-item.js';
+import '../components/review-submit-form.js';
 
 Template.Reviews_page.onCreated(() => {
   Meteor.subscribe('games');
@@ -23,10 +26,18 @@ Template.Reviews_page.onCreated(() => {
 Template.Reviews_page.onRendered(() => {
   $('.reviews-page').css('margin-top', $('#affixNav').height());
 
-  setElementHeightByRatio('.review-game-img', 2);
   $(window).resize(() => {
     setElementHeightByRatio('.review-game-img', 2);
-  });});
+  });
+
+  const gameId = FlowRouter.getParam('gameId');
+  const reviewCount = Reviews.find({ gameId: gameId }).count();
+
+  if (reviewCount === 0) {
+    $('.js-new-review').css('display', 'block');
+    $('.js-show-review-form').text('Submit New Review');
+  }
+});
 
 Template.Reviews_page.helpers({
   game() {
@@ -122,55 +133,3 @@ Template.Reviews_page.events({
     $('.js-new-review').css('display', 'none');
   }
 });
-
-Template.Review_submit_form.events({
-  'click .star'(event, instance) {
-    event.preventDefault();
-    var rating = $(event.target).parent().prevAll().length + 1;
-    Session.set('newReviewRating', rating);
-
-    $(event.target).removeClass('fa-star-o').addClass('fa-star');
-    $(event.target).parent().prevAll().children().removeClass('fa-star-o').addClass('fa-star');
-    $(event.target).parent().nextAll().children().removeClass('fa-star').addClass('fa-star-o');
-  },
-  'submit .js-new-review'(event, instance) {
-    event.preventDefault();
-    submitReview();
-  }
-});
-
-function submitReview() {
-  const gameId = FlowRouter.getParam('gameId');
-  const title = $('[name=title]').val().trim();
-  const content = $('[name=content]').val().trim();
-  const rating = Session.get('newReviewRating');
-
-  sAlert.closeAll();
-  if (title.length === 0) {
-    sAlert.error('Please add a title for your review.');
-    return;
-  }
-
-  if (content.length < 500) {
-    sAlert.error('Your review must be at least 500 characters long.');
-    return;
-  }
-
-  if (!rating || rating === 0) {
-    sAlert.error('Please rate the game to submit your review.');
-    return;
-  }
-
-  insert.call({
-    gameId,
-    title,
-    content,
-    rating
-  });
-
-  Session.set('newReviewRating', 0);
-  $('.star').children().removeClass('fa-star').addClass('fa-star-o');
-  $('[name=content]').val('');
-  $('[name=title]').val('');
-  $('.js-new-review').css('display', 'none');
-}

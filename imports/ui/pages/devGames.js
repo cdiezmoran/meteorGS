@@ -6,6 +6,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
 
+import '../components/games-grid.js';
+
 Template.DevGames_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('developers');

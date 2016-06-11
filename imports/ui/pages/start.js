@@ -8,6 +8,8 @@ import { $ } from 'meteor/jquery';
 import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
 
+import { setElementHeightByRatio } from '../../startup/client/functions.js';
+
 Template.Start_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('developers');
@@ -25,7 +27,14 @@ Template.Start_page.helpers({
   featuredGames() {
     return Games.find({}, { sort: { views: -1 }, limit: 6 });
   },
-  gameDeveloperName(developerId) {
-    return Developers.findOne({ _id: developerId }).name;
+  gameDeveloperName(developerIds) {
+    var firstDeveloperId = developerIds[0];
+    var developer = Developers.findOne({ _id: firstDeveloperId });
+    if (developerIds.length === 1) {
+      return developer && developer.name;
+    }
+    else {
+      return developer && (developer.name + ', +');
+    }
   }
 });

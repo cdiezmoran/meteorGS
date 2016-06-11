@@ -4,7 +4,9 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-import { Developers } from '../../../api/developers/developers.js';
+import { Developers } from '../../api/developers/developers.js';
+
+import { setElementHeightByRatio } from '../../startup/client/functions.js';
 
 Template.GamesGrid_comp.onCreated(() => {
   Meteor.subscribe('developers');

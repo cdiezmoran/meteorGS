@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Games } from '../../api/games/games.js';
 import { Developers } from '../../api/developers/developers.js';
-import { Reviews } from '../../api/reviews/reviews.js';
+import { Genres } from '../../api/genres/genres.js';
 
 Meteor.startup(() => {
   if (Developers.find().count() === 0) {
@@ -245,7 +245,6 @@ Meteor.startup(() => {
         esrbRating: 'everyone'
       },
       {
-        _id: 'storiespathofdestinies',
         name: 'Stories: The Path of Destinies',
         description: 'Stories: The Path of Destinies is an Action-RPG, an enchanted storybook filled with madcap fantasy tales, each told by a zippy narrator attuned to the player’s choices and actions.',
         createdAt: new Date(),
@@ -274,9 +273,9 @@ Meteor.startup(() => {
                        'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_83a93b490180dd0b51c91a364be0d677f792ab0f.1920x1080.jpg?t=1460755213',
                        'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_dd2ff9b1f868c5da4c6a59bf6e620445360c4bef.1920x1080.jpg?t=1460755213',
                        'http://cdn.akamai.steamstatic.com/steam/apps/439190/ss_ba4c39fe044f144a330176dbbb70d092a77721a3.1920x1080.jpg?t=1460755213'],
-        videoLinks: ['https://www.youtube.com/embed/5sRf9GsZ58A?controls=0',
-                     'https://www.youtube.com/embed/_ukxGwWsYJs?controls=0'],
-        esrbRating: 'teen'
+        videoLinks: ['https://www.youtube.com/embed/5sRf9GsZ58A',
+                     'https://www.youtube.com/embed/_ukxGwWsYJs'],
+        esrbRating: 'teen',
       },
       {
         name: 'The Binding of Isaac',
@@ -1128,84 +1127,61 @@ Meteor.startup(() => {
     const ratingCount = 0;
 
     data.forEach((game) => {
-      if (game._id) {
-        Games.insert({
-          _id: game._id,
-          name: game.name,
-          description: game.description,
-          createdAt: game.createdAt,
-          releaseDate: game.releaseDate,
-          genre: game.genre,
-          rating: game.rating,
-          img: game.img,
-          views: game.views,
-          availableOn: game.availableOn,
-          developerIds: game.developerIds,
-          imgHigh: game.imgHigh,
-          minSysRequirements: sysRequirements,
-          recommendedSysRequirements: sysRequirements,
-          videoLinks: game.videoLinks,
-          galleryLinks: game.galleryLinks,
-          languages: languages,
-          esrbRating: game.esrbRating,
-          ratingCount: ratingCount
-        });
-      }
-      else {
-        Games.insert({
-          name: game.name,
-          description: game.description,
-          createdAt: game.createdAt,
-          releaseDate: game.releaseDate,
-          genre: game.genre,
-          rating: game.rating,
-          img: game.img,
-          views: game.views,
-          availableOn: game.availableOn,
-          developerIds: game.developerIds,
-          imgHigh: game.imgHigh,
-          minSysRequirements: sysRequirements,
-          recommendedSysRequirements: sysRequirements,
-          videoLinks: game.videoLinks,
-          galleryLinks: game.galleryLinks,
-          languages: languages,
-          esrbRating: game.esrbRating,
-          ratingCount:ratingCount
-        });
-      }
+      Games.insert({
+        name: game.name,
+        description: game.description,
+        createdAt: game.createdAt,
+        releaseDate: game.releaseDate,
+        genre: game.genre,
+        rating: game.rating,
+        img: game.img,
+        views: game.views,
+        availableOn: game.availableOn,
+        developerIds: game.developerIds,
+        imgHigh: game.imgHigh,
+        minSysRequirements: sysRequirements,
+        recommendedSysRequirements: sysRequirements,
+        videoLinks: game.videoLinks,
+        galleryLinks: game.galleryLinks,
+        languages: languages,
+        esrbRating: game.esrbRating,
+        ratingCount:ratingCount
+      });
     });
   }
 
-  if (Reviews.find().count() === 0) {
+  if (Genres.find().count() === 0) {
     const data = [
       {
-        title: 'Excellent!',
-        content: 'Ut vestibulum cursus vestibulum. Pellentesque sit amet dui a justo congue varius. Proin ipsum sapien, feugiat nec consectetur a, dapibus eget mauris. Nunc a sagittis nisl. Morbi sem purus, vehicula a ultricies sit amet, mattis ac ante. Aliquam erat volutpat. In nibh purus, molestie tincidunt elit sed, placerat cursus augue.',
-        rating: 5,
-        likeCount: 0,
-        dislikeCount: 0
+        name: 'Action',
+        byUser: false
       },
       {
-        title: 'Not that great',
-        content: 'Nunc quis nunc diam. Donec eu consectetur arcu, eget fringilla felis. Mauris ut felis vel nisl vestibulum tincidunt. Pellentesque nec cursus mauris. Maecenas a dictum nulla.',
-        rating: 3,
-        likeCount: 0,
-        dislikeCount: 0
+        name: 'Adventure',
+        byUser: false
+      },
+      {
+        name: 'Indie',
+        byUser: false
+      },
+      {
+        name: 'RPG',
+        byUser: false
+      },
+      {
+        name: 'Simulation',
+        byUser: false
+      },
+      {
+        name: 'Shooter',
+        byUser: false
       }
     ];
 
-    const userId = 'gjeTZQ4h98AqmGJnt';
-    const gameId = 'storiespathofdestinies';
-
-    data.forEach((review) => {
-      Reviews.insert({
-        title: review.title,
-        content: review.content,
-        rating: review.rating,
-        likeCount: review.likeCount,
-        dislikeCount: review.dislikeCount,
-        userId: userId,
-        gameId: gameId
+    data.forEach((genre) => {
+      Genres.insert({
+        name: genre.name,
+        byUser: genre.byUser,
       });
     });
   }

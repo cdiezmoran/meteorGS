@@ -17,6 +17,7 @@ import '../../ui/pages/myList.js';
 import '../../ui/pages/devGames.js';
 import '../../ui/pages/reviews.js';
 import '../../ui/pages/singleReview.js';
+import '../../ui/pages/friends.js';
 import '../../ui/navs/nav-main.js';
 import '../../ui/navs/nav-start.js';
 
@@ -72,7 +73,7 @@ FlowRouter.route('/', {
     if (Meteor.loggingIn() || Meteor.userId()) {
       redirect('/home');
     }
-
+    window.scroll(0,0);
     Session.set('previousPaths', []);
   }],
   action() {
@@ -149,7 +150,14 @@ costumerRoutes.route('/review/:reviewId', {
   action() {
     BlazeLayout.render('App_body', { main: 'SingleReview_page', nav: 'Main_nav' })
   }
-})
+});
+
+costumerRoutes.route('/friends', {
+  name: 'User.friends',
+  action() {
+    BlazeLayout.render('App_body', { main: 'Friends_page', nav: 'Main_nav' })
+  }
+});
 
 FlowRouter.notFound = {
   action() {
@@ -164,7 +172,8 @@ AccountsTemplates.configureRoute('signIn', {
 
 AccountsTemplates.configureRoute('signUp', {
   name: 'signup',
-  path: '/signup'
+  path: '/signup',
+  template: 'mySignupForm'
 });
 
 AccountsTemplates.configureRoute('forgotPwd');

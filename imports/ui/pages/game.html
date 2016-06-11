@@ -37,13 +37,13 @@
         <div id="gameGalleryCarousel" class="carousel slide gallery">
           <ol class="carousel-indicators">
             {{#each imgVid in imagesAndVideos}}
-              <li class="{{isActive(@index)}}" data-target="#gameGalleryCarousel" data-slide-to="{{@index}}"></li>
+              <li class="{{isActive(@index)}} {{isVideo(@index)}}" data-target="#gameGalleryCarousel" data-slide-to="{{@index}}"></li>
             {{/each}}
           </ol>
           <div class="carousel-inner" role="listbox">
             {{#each videoLink in videoLinks}}
               <div class="item {{isActive(@index)}} vid">
-                <iframe src="{{videoLink}}" frameborder="0" width="100%" height="100%"></iframe>
+                <iframe src="{{videoLink}}?enablejsapi=1" frameborder="0" width="100%" height="100%" id="trailerFrame{{@index}}"></iframe>
               </div>
             {{/each}}
             {{#each imgLink in galleryImages}}
@@ -63,12 +63,19 @@
         </div>
         <h3>Reviews:  <span class="badge">{{reviewCount}}</span></h3>
         <div class="separator"></div>
-        <div class="reviews">
-          {{#each review in gameReviews}}
-            {{> Review_comp review=review}}
-          {{/each}}
-          <a href="{{pathFor 'Game.reviews' gameId=game._id}}" class="show-all">Show all {{reviewCount}} reviews</a>
-        </div>
+        {{#if reviewCount}}
+          <div class="reviews">
+            {{#each review in gameReviews}}
+              {{> Review_comp review=review}}
+            {{/each}}
+            <a href="{{pathFor 'Game.reviews' gameId=game._id}}" class="show-all">Show all {{reviewCount}} reviews</a>
+          </div>
+        {{else}}
+          <div class="no-reviews">
+            <h3>Be the first to write a review about this game!</h3>
+            <a href="{{pathFor 'Game.reviews' gameId=game._id}}" class="btn btn-play">Create New Review</a>
+          </div>
+        {{/if}}
       </div>
 
       <div class="col-lg-4 right-column">

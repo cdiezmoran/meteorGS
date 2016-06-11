@@ -7,6 +7,8 @@ import { _ } from 'meteor/underscore';
 
 import { Games } from '../../api/games/games.js';
 
+import '../components/games-grid.js';
+
 Template.Search_page.onCreated(() => {
   Meteor.subscribe('games');
 });

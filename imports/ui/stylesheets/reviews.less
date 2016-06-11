@@ -1,3 +1,93 @@
+.reviews {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.review-item {
+  color: white;
+  margin: 15px 0;
+  font-size: 16px;
+  text-align: left;
+
+  img {
+    margin: 10px 5px;
+  }
+
+  p {
+    background-color: #444;
+    padding: 5px 10px;
+    text-align: justify;
+    margin-bottom: 0;
+  }
+}
+
+.reviews-separator {
+  background-color: #777 !important;
+}
+
+.rating {
+  float: right;
+  margin-top: 15px;
+  margin-right: 5px;
+}
+
+.review-item-header {
+  background-color: #525C65;//#777;
+
+  a, a:hover, a:focus {
+    color: white;
+  }
+}
+
+.like-bar {
+  color: white;
+  background-color: #444;
+  padding: 5px 10px;
+  text-align: right;
+
+  i {
+    font-size: 1.5em;
+  }
+}
+
+.like-button {
+  color: white;
+  margin-right: 10px;
+}
+
+.like-button:hover {
+  color: @color-primary;
+}
+
+.dislike-button {
+  color: white;
+  margin: 0 10px;
+}
+
+.dislike-button:hover {
+  color: #f44336;
+}
+
+.like-button:focus, .dislike-button:focus {
+  color: white;
+}
+
+.disliked, .disliked:focus {
+  color: #f44336 !important;
+}
+
+.liked, .liked:focus {
+  color: @color-primary !important;
+}
+
+.show-all {
+  color: #ddd;
+}
+
+.show-all:hover {
+  color: white;
+}
+
 #input-title {
   width: 100%;
   border-radius: 2px;
@@ -98,4 +188,8 @@
 
 .comment-item {
   color: white;
+}
+
+.single-review-page {
+  margin-bottom: 15px;
 }

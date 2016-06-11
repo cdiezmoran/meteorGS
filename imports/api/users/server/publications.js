@@ -1,10 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 
-Meteor.publish("userData", function () {
-  if (this.userId) {
-    return Meteor.users.find({_id: this.userId},
-                             {fields: {'myList': 1}});
-  } else {
-    this.ready();
-  }
+Meteor.publish("userData", () => {
+  return Meteor.users.find({}, { fields: { 'profile': 1, 'myList': 1, 'friendsList': 1, 'status': 1 } });
 });

@@ -20,7 +20,7 @@
               <ul class="dropdown-menu navbar-drop" aria-labelledby="genre-dropdown">
                 <li class="dropdown-header">Browse by genre:</li>
                 {{#each genre in genres}}
-                  <li><a href="{{pathFor 'Genre.show' genre=genre}}">{{genre}}</a></li>
+                  <li><a href="{{pathFor 'Genre.show' genre=genre.name}}">{{genre.name}}</a></li>
                 {{/each}}
                 <li role="separator" class="divider"></li>
                 <li><a href="#">All genres and tags</a></li>
@@ -45,6 +45,7 @@
               <ul class="dropdown-menu navbar-drop" aria-labelledby="user-dropdown">
                 <li><a href="#" class="dropdown-item">Profile</a></li>
                 <li><a href="#" class="dropdown-item">Account</a></li>
+                <li><a href="{{pathFor 'User.friends'}}" class="dropdown-item">Friends</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#" class="js-signout dropdown-item">Sign Out</a></li>
               </ul>

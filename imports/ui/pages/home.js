@@ -4,18 +4,24 @@ import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
 import { Games } from '../../api/games/games.js';
+import { Genres } from '../../api/genres/genres.js';
 
-import './components/games-grid.js';
+import '../components/games-grid.js';
+
+import { setCarouselHeightByRatio } from '../../startup/client/functions.js';
 
 Template.Home_page.onCreated(() => {
   Meteor.subscribe('games');
   Meteor.subscribe('userData');
+  Meteor.subscribe('mainGenres');
 });
 
 Template.Home_page.onRendered(() => {
   if ($(window).width() < 1080) {
     setCarouselHeightByRatio(['#myCarousel', '.carousel', '.carousel .item', '.carousel .item img'], 1.7818);
   }
+
+  $('#myCarousel').carousel({ pause: false });
 
   $(window).resize(() => {
     if ($(window).width() < 1080) {
@@ -34,14 +40,7 @@ Template.Home_page.helpers({
     }
   },
   genres() {
-    return [
-      'Action',
-      'Simulation',
-      'Shooter',
-      'RPG',
-      'Indie',
-      'Adventure'
-    ];
+    return Genres.find();
   },
   gamesByGenre(genre) {
     genre = genre.toLowerCase();

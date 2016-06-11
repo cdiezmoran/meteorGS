@@ -25,10 +25,7 @@
 
 <template name="override-atTextInput">
   <div class="input {{#if isValidating}}validating{{/if}} {{#if hasError}}error{{/if}} {{#if hasSuccess}}has-success{{/if}} {{#if feedback}}has-feedback{{/if}}">
-    <input type="{{type}}" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off">
-    {{#if hasIcon}}
-        <span class="{{iconClass}}"></span>
-    {{/if}}
+      <input type="{{type}}" id="at-field-{{_id}}" name="at-field-{{_id}}" placeholder="{{placeholder}}" autocapitalize="none" autocorrect="off" aria-describedby="{{_id}}-addon">
     {{#if hasError}}
       <span>{{errorText}}</span>
     {{/if}}
@@ -64,4 +61,36 @@
     </form>
   </div>
   <div class="separator-signin"></div>
+</template>
+
+<template name="mySignupForm">
+  <div class="background"></div>
+  <div class="content-center signup">
+    <form id="application-signup" class="signup">
+      <h4 class="page-header">Account details</h4>
+      <div class="input-group">
+        <span class="input-group-addon" id="user-addon"><i class="fa fa-user fa-1p25x" aria-hidden="true"></i></span>
+        <input type="text" name="fullName" class="form-control signup-input" placeholder="Full Name" aria-describedby="user-addon" id="firstName-input">
+      </div> <!-- end .form-group -->
+      <div class="input-group">
+        <!--<label for="emailAddress">Email Address</label>-->
+        <span class="input-group-addon" id="email-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+        <input type="email" name="emailAddress" class="form-control signup-input" placeholder="Email Address" aria-describedby="email-addon">
+      </div> <!-- end .form-group -->
+      <div class="input-group">
+        <span class="input-group-addon" id="password-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+        <input type="password" name="password" class="form-control signup-input" placeholder="Password" aria-describedby="password-addon">
+      </div> <!-- end .form-group -->
+      <h4 class="page-header">Payment Information</h4>
+      <p class="sub-info">
+        You will only be charged when your trial ends. You can cancel your subscription at any time in your account settings.
+      </p>
+      <div class="form-group">
+        {{> Template.dynamic template="creditCard" data="signup"}}
+      </div>
+      <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-block" data-loading-text="Setting up your trial..." style="margin-top: 40px; margin-bottom: 20px;" value="Sign me up now!">
+      </div> <!-- end .form-group -->
+    </form>
+  </div>
 </template>
