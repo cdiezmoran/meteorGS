@@ -30,11 +30,11 @@ Template.Game_page.onRendered(() => {
   $('.game-container').css('padding-top', $('#affixNav').height());
   $('#gameGalleryCarousel').carousel({interval: false});
 
-  setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.62);
+  setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.72);
 
   $(window).resize(() => {
     setElementHeightByRatio('.game-header-image', 2);
-    setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.62);
+    setCarouselHeightByRatio(['#gameGalleryCarousel', '.gallery', '.gallery .item', '.gallery .item img'], 1.72);
   });
 });
 

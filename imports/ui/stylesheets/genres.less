@@ -22,3 +22,46 @@
   color: white;
   background-color: #444;
 }
+
+.allgenres-title {
+  margin-top: 0;
+  margin-left: 15px;
+}
+
+.genre-list-item {
+  background-color: #333;
+  color: #aaa;
+  margin: 0;
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.genre-list-anchor.active, .genre-list-anchor.active:hover {
+  .genre-list-item {
+    color: white;
+    background-color: #444;
+  }
+
+  .active-bar {
+    background-color: @color-primary;
+  }
+}
+
+.active-bar {
+  position: absolute;
+  height: 34px;
+  width: 5px;
+  background-color: none;
+}
+
+.genre-list-anchor:hover {
+  .genre-list-item {
+    color: white;
+    background-color: #444;
+  }
+}
+
+.genres-list {
+  margin-bottom: 15px;
+}

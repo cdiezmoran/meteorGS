@@ -1,0 +1,28 @@
+<template name="AllGenres_page">
+  <div class="genres-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+          <div class="right-column-header">Genres and Tags</div>
+          <div class="genres-list">
+            {{#each genre in genres}}
+              <a href="#" class="genre-list-anchor {{isActive @index}}">
+                <div class="active-bar"></div>
+                <p class="genre-list-item">
+                  {{genre.name}}
+                </p>
+              </a>
+              {{{isNotLastGenre @index}}}
+            {{/each}}
+          </div>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-7" id="games-section">
+          <h3 class='allgenres-title'>{{genreTitle}}</h3>
+            {{#each game in games}}
+              {{> GamesGrid_comp game=game cols=columns}}
+            {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

@@ -19,5 +19,8 @@ Template.MyList_page.onRendered(() => {
 Template.MyList_page.helpers({
   myListGames() {
     return Meteor.user() && Games.find({ _id: { $in: Meteor.user().myList || []} }, { sort: { createdAt: -1},  limit: 8 });
+  },
+  columns () {
+    return { lg: 'col-lg-3', md: 'col-md-4', sm: 'col-sm-6' }
   }
 });

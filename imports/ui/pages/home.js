@@ -32,7 +32,7 @@ Template.Home_page.onRendered(() => {
 
 Template.Home_page.helpers({
   gamesAddedRecently() {
-    return Games.find({}, { sort: { createdAt: -1 }, limit: 3 });
+    return Games.find({}, { sort: { createdAt: -1, rating: -1 }, limit: 3 });
   },
   isActive(index) {
     if (index === 0) {
@@ -40,7 +40,7 @@ Template.Home_page.helpers({
     }
   },
   genres() {
-    return Genres.find();
+    return Genres.find({ byUser: false });
   },
   gamesByGenre(genre) {
     genre = genre.toLowerCase();
@@ -61,5 +61,8 @@ Template.Home_page.helpers({
   },
   myListCount() {
     return Meteor.user() && Meteor.user().myList && Meteor.user().myList.length;
+  },
+  columns () {
+    return { lg: 'col-lg-3', md: 'col-md-4', sm: 'col-sm-6' }
   }
 });

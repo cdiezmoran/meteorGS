@@ -1,14 +1,15 @@
 import { SearchSource } from 'meteor/meteorhacks:search-source';
 
 import { Games } from '../../api/games/games.js';
+import { Developers } from '../../api/developers/developers.js';
 
 SearchSource.defineSource('Games', (searchText, options) => {
   var options = {sort: {rating: -1}/*, limit: 20*/};
 
   if(searchText) {
-    var regExp = buildRegExp(searchText);
+    var regExp = new RegExp("(" + searchText.trim() + ")", "ig");
     var selector = {$or: [
-      {name: regExp},
+      { name: regExp },
     ]};
 
     return Games.find(selector, options).fetch();
@@ -16,9 +17,3 @@ SearchSource.defineSource('Games', (searchText, options) => {
     return Games.find({}, options).fetch();
   }
 });
-
-function buildRegExp(searchText) {
-  // this is a dumb implementation
-  var parts = searchText.trim().split(/[ \-\:]+/);
-  return new RegExp("(" + parts.join('|') + ")", "ig");
-}

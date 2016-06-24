@@ -201,6 +201,11 @@ Meteor.startup(() => {
         _id: 'fadev',
         name: 'Fake Developer',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
+      },
+      {
+        _id: 'hemadev',
+        name: 'Heart Machine',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris a erat purus. Nam tempus diam vel felis convallis tincidunt. Aenean leo lorem, vehicula congue dolor vitae, interdum efficitur mauris. Nunc non posuere diam. Praesent ac risus eu massa consectetur maximus. Quisque blandit lectus eget urna porttitor egestas. Nulla facilisi.'
       }
     ];
 
@@ -222,6 +227,37 @@ Meteor.startup(() => {
   }
   if (Games.find().count() === 0) {
     const data = [
+      {
+        name: 'Hyper Light Drifter',
+        description: 'Explore a beautiful, vast and ruined world riddled with dangers and lost technologies.',
+        createdAt: new Date(),
+        releaseDate: new Date(),
+        genre: [
+          'indie',
+          'rpg',
+          'action',
+          'adventure'
+        ],
+        rating: 5,
+        img: 'http://cdn.wegotthiscovered.com/wp-content/uploads/Hyper-Light-Drifter-featured.png',
+        views: 15,
+        availableOn: {
+          windows: true,
+          mac: true,
+          linux: true
+        },
+        developerIds: ['hemadev'],
+        imgHigh: 'http://www.heart-machine.com/wp-content/uploads/2015/02/web_banner.jpg',
+        galleryLinks: ['http://cdn.akamai.steamstatic.com/steam/apps/257850/ss_e786b1d9c66eb9c61e4da2945fe1d9faeb2af736.1920x1080.jpg?t=1459414651',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/257850/ss_19c973259b736f14c4541ba044f3761b39a18737.1920x1080.jpg?t=1459414651',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/257850/ss_37ad0b207c867078e87cf8a185fe3c66b0bdd490.1920x1080.jpg?t=1459414651',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/257850/ss_b38d4392356a39a745fd18c032195a71c40d038b.1920x1080.jpg?t=1459414651',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/257850/ss_6f2737707906d93e4bd92c7aa4db615b8da10693.1920x1080.jpg?t=1459414651',
+                       'http://cdn.akamai.steamstatic.com/steam/apps/257850/ss_fba6762a846f9d79ade2f008514e2e4cea16d0a4.1920x1080.jpg?t=1459414651',],
+        videoLinks: ['https://www.youtube.com/embed/nWufEJ1Ava0',
+                     'https://www.youtube.com/embed/uN9YsuJMsDg'],
+        esrbRating: 'everyone',
+      },
       {
         name: 'Stardew Valley',
         description: 'You\'ve inherited your grandfather\'s old farm plot in Stardew Valley. Armed with hand-me-down tools and a few coins, you set out to begin your new life. Can you learn to live off the land and turn these overgrown fields into a thriving home?',
@@ -1161,8 +1197,40 @@ Meteor.startup(() => {
         byUser: false
       },
       {
+        name: 'Casual',
+        byUser: true
+      },
+      {
+        name: 'Fantasy',
+        byUser: true
+      },
+      {
+        name: 'FPS',
+        byUser: true
+      },
+      {
         name: 'Indie',
         byUser: false
+      },
+      {
+        name: 'MOBA',
+        byUser: true
+      },
+      {
+        name: 'Narration',
+        byUser: true
+      },
+      {
+        name: 'Platformer',
+        byUser: true
+      },
+      {
+        name: 'Racing',
+        byUser: true
+      },
+      {
+        name: 'Retro',
+        byUser: true
       },
       {
         name: 'RPG',
@@ -1175,6 +1243,30 @@ Meteor.startup(() => {
       {
         name: 'Shooter',
         byUser: false
+      },
+      {
+        name: 'Sniper',
+        byUser: true
+      },
+      {
+        name: 'Space',
+        byUser: true
+      },
+      {
+        name: 'Sports',
+        byUser: true
+      },
+      {
+        name: 'Stealth',
+        byUser: true
+      },
+      {
+        name: 'Survival',
+        byUser: true
+      },
+      {
+        name: 'Tactical',
+        byUser: true
       }
     ];
 

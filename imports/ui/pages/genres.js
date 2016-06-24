@@ -38,5 +38,8 @@ Template.Genres_page.helpers({
   genreGames() {
     const genre = FlowRouter.getParam('genre').toLowerCase();
     return Games.find({ genre: { $in: [genre] } }, { sort: { createdAt: -1, views: -1 } });
+  },
+  columns () {
+    return { lg: 'col-lg-3', md: 'col-md-4', sm: 'col-sm-6' }
   }
 });

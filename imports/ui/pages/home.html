@@ -39,7 +39,7 @@
         <div class="container-fluid apretado">
           <div class="row">
             {{#each game in (gamesByGenre genre.name)}}
-              {{> GamesGrid_comp game=game}}
+              {{> GamesGrid_comp game=game cols=columns}}
             {{/each}}
           </div>
           <a href="{{pathFor 'Genre.show' genre=genre}}" class="show-all-text">
@@ -55,7 +55,7 @@
         <div class="container-fluid apretado">
           <div class="row">
             {{#each game in myListGames}}
-              {{> GamesGrid_comp game=game}}
+              {{> GamesGrid_comp game=game cols=columns}}
             {{/each}}
           </div>
           <a href="{{pathFor 'User.list'}}" class="show-all-text">

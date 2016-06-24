@@ -32,5 +32,8 @@ Template.Search_page.helpers({
   },
   isSearchBoxEmpty() {
      return !$('#search-box').val();
+  },
+  columns () {
+    return { lg: 'col-lg-3', md: 'col-md-4', sm: 'col-sm-6' }
   }
 });

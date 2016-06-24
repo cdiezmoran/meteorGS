@@ -18,6 +18,7 @@ import '../../ui/pages/devGames.js';
 import '../../ui/pages/reviews.js';
 import '../../ui/pages/singleReview.js';
 import '../../ui/pages/friends.js';
+import '../../ui/pages/allGenres.js';
 import '../../ui/navs/nav-main.js';
 import '../../ui/navs/nav-start.js';
 
@@ -131,7 +132,7 @@ costumerRoutes.route('/myList', {
   }
 });
 
-costumerRoutes.route('/devGames/:devId', {
+costumerRoutes.route('/developer/games/:devId', {
   name: 'Developer.games',
   action() {
     BlazeLayout.render('App_body', { main: 'DevGames_page', nav: 'Main_nav' })
@@ -156,6 +157,13 @@ costumerRoutes.route('/friends', {
   name: 'User.friends',
   action() {
     BlazeLayout.render('App_body', { main: 'Friends_page', nav: 'Main_nav' })
+  }
+});
+
+costumerRoutes.route('/genres', {
+  name: 'All.genres',
+  action() {
+    BlazeLayout.render('App_body', { main: 'AllGenres_page', nav: 'Main_nav' })
   }
 });
 

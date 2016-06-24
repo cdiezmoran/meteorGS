@@ -27,7 +27,7 @@ Template.Main_nav.helpers({
     return user && user.profile.name.split(" ")[0];
   },
   genres() {
-    return Genres.find();
+    return Genres.find({ byUser: false });
   },
   gameDropdownTitle() {
     var routeName = FlowRouter.getRouteName();
